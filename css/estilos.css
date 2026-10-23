@@ -172,6 +172,18 @@ body.menu .cab .marca__texto { color: var(--amarillo); }
 .portada.con-cartel .portada__in, html.con-recorrido .portada .portada__in { display: block; padding-inline: 0; max-width: none; }
 .portada.con-cartel .portada__cartel, html.con-recorrido .portada .portada__cartel { width: 100%; justify-self: auto; }
 .portada.con-cartel .portada-texto, html.con-recorrido .portada .portada-texto { max-width: 44rem; margin: 0 auto; padding: 40px var(--lado) 64px; }
+/* en escritorio, bajo el cartel: una banda a dos columnas que llena el ancho (titular grande a la izquierda, datos y botones abajo a la derecha) */
+@media (min-width: 900px) {
+  .portada.con-cartel .portada-texto, html.con-recorrido .portada .portada-texto {
+    max-width: 1320px; padding: clamp(48px, 6vw, 88px) var(--lado) clamp(56px, 7vw, 104px);
+    display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); grid-template-areas: "eye eye" "tit baj" "tit acc";
+    grid-template-rows: auto 1fr auto; column-gap: clamp(40px, 6vw, 112px); align-items: end;
+  }
+  .portada.con-cartel .eyebrow, html.con-recorrido .portada .eyebrow { grid-area: eye; }
+  .portada.con-cartel .portada__tit, html.con-recorrido .portada .portada__tit { grid-area: tit; font-size: clamp(3rem, 5.6vw, 6rem); line-height: .98; margin: 0; }
+  .portada.con-cartel .portada__baj, html.con-recorrido .portada .portada__baj { grid-area: baj; max-width: 26rem; padding-top: 18px; border-top: 2px solid currentColor; }
+  .portada.con-cartel .portada__acc, html.con-recorrido .portada .portada__acc { grid-area: acc; margin-top: 24px; }
+}
 @media (max-width: 899px) {
   .portada { display: block; min-height: 0; padding: var(--cab) 0 52px; }
   .portada__in { grid-template-columns: 1fr; padding-inline: 0; gap: 0; }
