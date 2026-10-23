@@ -1,0 +1,48 @@
+<!-- ============ pie: el cartel completo, sobre la madera de la cerca (lo monta el módulo cartel, js/cartel.js); la web pone el hueco ============ -->
+<footer class="pie s-madera" id="pie">
+  <div class="env">
+    <div class="pie__cartel-fila">
+      <div class="pie__cartel" data-modulo="cartel-pie">
+        <!-- respaldo: el cartel real, recortado de la foto de la entrada -->
+        <img data-foto="cartel-recorte" alt="El cartel amarillo de la entrada: Casa Sánchez, Apartamentos rurales, Albergue turístico, con una flecha azul" sizes="350px">
+      </div>
+      <p class="pie__frase">Este es el cartel de la entrada. <span>Si lo ves en la cerca, has llegado.</span></p>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2 class="pie__tit">Albergue Casa Sánchez</h2>
+        <p>Albergue privado del Camino Primitivo, abierto desde 2016, con 16 literas en 4 habitaciones y un apartamento para dos.</p>
+        <p>C/ El Salvador, s/n<br>33730 Grandas de Salime (Asturias)</p>
+      </div>
+      <div>
+        <h2 class="pie__tit">Reservar</h2>
+        <p><a href="tel:{{telefono_movil_tel}}" class="mono">{{telefono_movil}}</a><br><a href="tel:{{telefono_fijo_tel}}" class="mono">{{telefono_fijo}}</a><br><a href="mailto:{{correo}}">{{correo}}</a></p>
+        <a class="btn btn--marca" href="#reservar">Ver fechas</a>
+      </div>
+      <div>
+        <h2 class="pie__tit">Por aquí</h2>
+        <p><a href="#casa">La casa</a><br><a href="#dentro">Dentro</a><br><a href="#etapa">La etapa</a><br><a href="#pueblo">El pueblo</a><br><a href="#llegar">Cómo llegar</a></p>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> Albergue Casa Sánchez · Grandas de Salime, Asturias</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso y, durante 30 minutos, el tiempo que le pide a Open-Meteo (sin cookies). Las letras vienen de Google Fonts y el mapa de Google solo se carga si lo pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--marca" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="cartel" aria-pressed="true">Cartel</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->

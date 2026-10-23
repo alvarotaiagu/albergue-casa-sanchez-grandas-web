@@ -1,0 +1,29 @@
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera fija (desde que se cierra la cortina): «Casa Sánchez» con la letra del cartel, las paradas y el teléfono ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="marca" href="./" aria-label="Albergue Casa Sánchez, a la portada"><!--marca-cabecera--></a>
+    <nav class="cab__nav" aria-label="Principal">
+      <a href="#casa">La casa</a>
+      <a href="#jardin">El jardín</a>
+      <a href="#dentro">Dentro</a>
+      <a href="#etapa">La etapa</a>
+      <a href="#reservar">Reservar</a>
+    </nav>
+    <a class="cab__tel" href="tel:{{telefono_movil_tel}}"><span class="vh">Teléfono: </span>{{telefono_movil}}</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+  <div class="menu-movil" id="menu-movil" aria-hidden="true">
+    <nav aria-label="Menú">
+      <a href="#casa"><small>Piedra, pizarra y jardín</small>La casa</a>
+      <a href="#jardin"><small>Lo que más cuentan las reseñas</small>El jardín</a>
+      <a href="#dentro"><small>Literas, cocina, lo que hay y lo que no</small>Dentro</a>
+      <a href="#etapa"><small>De Berducedo a Grandas</small>La etapa</a>
+      <a href="#pueblo"><small>Farmacia, tiendas, museo y presa</small>El pueblo</a>
+      <a href="#reservar"><small>Tu cama o el apartamento</small>Reservar</a>
+      <a href="#llegar"><small>C/ El Salvador · Grandas de Salime</small>Cómo llegar</a>
+    </nav>
+    <p class="menu-movil__tel"><a href="tel:{{telefono_movil_tel}}">{{telefono_movil}}</a> · <a href="tel:{{telefono_fijo_tel}}">{{telefono_fijo}}</a></p>
+  </div>
+</header>

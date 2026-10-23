@@ -1,0 +1,167 @@
+/* ------------------------------------------------------------------
+   Albergue Casa Sánchez · Entrada (agente Entrada): la cortina «La flecha», la portada «El cartel»,
+   el hilo de flechas, la flor, el cartel del pie y la flechita del foco.
+   Todo bajo #cortina, [data-modulo="cartel"], [data-modulo="cartel-pie"], [data-modulo="flecha"], [data-flor]
+   o un id propio. Colores y letras de la web con var(--x, valor) por si estilos.css aún no está.
+   ------------------------------------------------------------------ */
+
+/* ================= cortina «La flecha» =================
+   Solo se ve con html.cortina-activa (lo pone el script de la parte): sin JS no aparece nunca. */
+#cortina.cortina {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  width: 100%; height: 100%; overflow: hidden;
+  background: #2E3338 url(../img/brocha/pizarra.webp) 0 0 / 512px repeat;
+  contain: strict;
+}
+html.cortina-activa #cortina.cortina { display: block; }
+#cortina.cortina[hidden], html.cortina-fuera #cortina.cortina { display: none !important; }
+@media (prefers-reduced-motion: reduce) { #cortina.cortina { display: none !important; } }
+html.cortina-activa, html.cortina-activa body { overflow: hidden; }
+#cortina .cortina__lienzo { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* con el lienzo en marcha, la pizarra la pinta él (y le abre el agujero): detrás tiene que estar la portada */
+#cortina.es-lienzo { background: transparent; }
+#cortina.es-abriendo { pointer-events: none; }
+
+/* respaldo si js/flecha.js no llega (la red de seguridad de la parte retira la cortina a los 2,5 s):
+   una flecha que sale a los 0,9 s y un círculo amarillo que crece desde su punta a los 1,55 s */
+#cortina .cortina__flecha {
+  position: absolute; left: 50%; top: 45%; width: min(34vmin, 330px); height: auto; fill: #6552E0;
+  transform: translate(-50%, -50%) rotate(-90deg); opacity: 0;
+  animation: cortina-flecha .45s ease .9s forwards;
+}
+#cortina .cortina__amarillo {
+  position: absolute; inset: 0; background: var(--amarillo, #E0BF50);
+  clip-path: circle(0 at 50% 63%);
+  animation: cortina-amarillo .85s cubic-bezier(.7, 0, .25, 1) 1.55s forwards;
+}
+#cortina.es-lienzo .cortina__flecha, #cortina.es-lienzo .cortina__amarillo { display: none; }
+@keyframes cortina-flecha { to { opacity: 1; } }
+@keyframes cortina-amarillo { to { clip-path: circle(150% at 50% 63%); } }
+
+/* ================= portada «El cartel» =================
+   Con JS la sección se fija con position:sticky: el módulo mide 100svh + el recorrido (la cámara se aleja
+   durante ese recorrido). Hay que reservar ese alto desde el principio (html.con-recorrido lo pone la parte
+   de la cortina cuando hay movimiento) para que al montarse nada salte. En el móvil, ≤ 1,6 pantallas. */
+[data-modulo="cartel"] { --cartel-recorrido: 150svh; }
+@media (max-width: 759px) { [data-modulo="cartel"] { --cartel-recorrido: 135svh; } }
+html.con-recorrido [data-modulo="cartel"]:not([data-montado]) { min-height: calc(100svh + var(--cartel-recorrido)); }
+[data-modulo="cartel"].cartel { position: relative; height: calc(100svh + var(--cartel-recorrido)); }
+[data-modulo="cartel"].cartel--quieto { height: auto; }
+[data-modulo="cartel"] .cartel-recorrido { height: 100%; }
+[data-modulo="cartel"] .cartel-escena {
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  background: var(--amarillo-sombra, #D8B241);
+  touch-action: pan-y; -webkit-user-select: none; user-select: none;
+  contain: layout paint;
+}
+[data-modulo="cartel"].cartel--quieto .cartel-escena { position: relative; contain: layout paint; }
+
+/* el vector: 1000×575 en coordenadas del cartel; el JS lo coloca con un matrix3d */
+[data-modulo="cartel"] .cartel-vector {
+  position: absolute; left: 0; top: 0; width: 1000px; height: 575px;
+  transform-origin: 0 0; pointer-events: none; will-change: transform, opacity;
+}
+[data-modulo="cartel"] .cartel-vector svg { display: block; width: 1000px; height: 575px; overflow: visible; }
+
+/* la foto real, contenida y en un marco con forma de panel amarillo (clip-path con la franja y su joroba) */
+[data-modulo="cartel"] .cartel-marco {
+  position: absolute; background: var(--amarillo, #E0BF50); opacity: 0;
+  transform-origin: 50% 50%; will-change: transform, opacity;
+}
+[data-modulo="cartel"] .cartel-foto { position: absolute; overflow: hidden; background: #3a3a30; }
+[data-modulo="cartel"] .cartel-foto picture { display: block; width: 100%; height: 100%; }
+[data-modulo="cartel"] .cartel-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* el gesto «girar la flecha» */
+[data-modulo="cartel"] .cartel-girar {
+  position: absolute; z-index: 3; margin: 0; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; color: transparent; cursor: grab; touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+[data-modulo="cartel"] .cartel-girar:disabled { pointer-events: none; }
+[data-modulo="cartel"] .cartel-girar:focus-visible { outline: 2px solid var(--azul, #291886); outline-offset: 4px; background: rgba(41, 24, 134, .08); }
+[data-modulo="cartel"] .cartel-rumbo {
+  position: absolute; z-index: 4; margin: 0; padding: .5rem .95rem; border-radius: 999px;
+  transform: translate(-50%, -100%);
+  background: var(--cal, #F5F0E6); color: var(--pardo, #412B21);
+  font: 600 clamp(.82rem, 1.5vw, 1rem)/1.2 var(--f-texto, 'Rethink Sans', system-ui, sans-serif);
+  font-variant-numeric: tabular-nums; letter-spacing: .005em; white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(40, 25, 0, .28);
+  opacity: 0; pointer-events: none; transition: opacity .25s ease;
+}
+[data-modulo="cartel"] .cartel-rumbo.es-visible { opacity: 1; }
+[data-modulo="cartel"] .cartel-rumbo.se-va { opacity: 0; transition-duration: 1s; }
+[data-modulo="cartel"] .cartel-rumbo.solo-lectores {
+  position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); opacity: 0; box-shadow: none;
+}
+[data-modulo="cartel"] .cartel-pista {
+  position: absolute; left: 0; right: 0; bottom: max(16px, 3.5svh); z-index: 2; margin: 0;
+  display: flex; flex-direction: column; align-items: center; gap: .55rem; pointer-events: none;
+  font: 600 .74rem/1 var(--f-texto, 'Rethink Sans', system-ui, sans-serif); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--pardo, #412B21); transition: opacity .4s ease;
+}
+[data-modulo="cartel"] .cartel-pista__baja::after {
+  content: ''; display: block; width: 9px; height: 9px; margin: .5rem auto 0;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-modulo="cartel"] .cartel-pista__baja::after { animation: cartel-baja 1.6s ease-in-out infinite; }
+}
+@keyframes cartel-baja { 0%, 100% { transform: translateY(0) rotate(45deg); } 50% { transform: translateY(5px) rotate(45deg); } }
+[data-modulo="cartel"].cartel--quieto .cartel-pista { display: none; }
+
+/* la entrada: lo que aún no se ha dibujado espera oculto (nunca con display: nada cambia de sitio) */
+[data-modulo="cartel"] .cartel-escena.preparando .trazo { stroke-dasharray: 1 2; stroke-dashoffset: 1; }
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-albergue"] path,
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-turistico"] path { opacity: 0; transform: translateY(22px); }
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-vieira"],
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-flecha"],
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-peregrino"] .cabeza { opacity: 0; }
+[data-modulo="cartel"] .cartel-escena.preparando [id$="-apartamentos"] { animation: cartel-aparece .7s ease 2.4s backwards; }
+@keyframes cartel-aparece { from { opacity: 0; } }
+
+/* ================= la flor (data-flor y la del cartel) ================= */
+.flor-suelta { display: block; width: 100%; height: 100%; overflow: visible; }
+[data-flor] { display: inline-block; width: var(--flor-tam, 1.9em); height: var(--flor-tam, 1.9em); vertical-align: middle; }
+.flor-suelta .petalo > path:first-child { fill: var(--oro, #A37F31); }
+.flor-suelta .nervio { fill: none; stroke: var(--flor-fondo, var(--cal, #F5F0E6)); stroke-width: 1.1; stroke-linecap: round; }
+.flor-suelta .centro { fill: var(--pardo, #412B21); }
+
+/* ================= el pie: el cartel completo sobre la madera de la cerca ================= */
+[data-modulo="cartel-pie"].cartel-pie { display: block; width: 100%; }
+[data-modulo="cartel-pie"] .pie-cerca {
+  position: relative; box-sizing: border-box; width: min(100%, 460px); margin-inline: auto;
+  padding: clamp(18px, 3.4vw, 30px); border-radius: 6px;
+  background: var(--madera, #7A5236) url(../img/brocha/madera.webp) 0 0 / 512px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, .14), inset 0 -4px 10px rgba(0, 0, 0, .38), 0 18px 36px rgba(0, 0, 0, .34);
+}
+[data-modulo="cartel-pie"] .pie-cartel svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 5px 7px rgba(0, 0, 0, .42)); }
+[data-modulo="cartel-pie"] .pie-clavos { position: absolute; inset: 0; pointer-events: none; }
+[data-modulo="cartel-pie"] .pie-clavos::before, [data-modulo="cartel-pie"] .pie-clavos::after {
+  content: ''; position: absolute; top: 9px; width: 7px; height: 7px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d9d4c6, #6c685c 70%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+}
+[data-modulo="cartel-pie"] .pie-clavos::before { left: 9px; }
+[data-modulo="cartel-pie"] .pie-clavos::after { right: 9px; }
+[data-modulo="cartel-pie"] .pie-rumbo { margin: .9rem 0 0; text-align: center; font: 600 .95rem/1.2 var(--f-texto, 'Rethink Sans', system-ui, sans-serif); color: var(--cal, #F5F0E6); font-variant-numeric: tabular-nums; }
+
+/* ================= el hilo: la flecha azul que se pinta con el scroll ================= */
+[data-modulo="flecha"] {
+  position: relative; display: block; width: 100%; height: clamp(150px, 20vw, 230px); overflow: hidden;
+  background: #33373C url(../img/brocha/pizarra.webp) 0 0 / 512px; pointer-events: none;
+}
+[data-modulo="flecha"][data-superficie="piedra"] { background: #B9AE9C url(../img/brocha/piedra.webp) 0 0 / 512px; }
+[data-modulo="flecha"][data-superficie="madera"] { background: #7A5236 url(../img/brocha/madera.webp) 0 0 / 512px; }
+[data-modulo="flecha"] .hilo__lienzo { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* ================= el foco del teclado: contorno de 2 px y una flechita a brochazo =================
+   main.js pone #foco-flecha (position:fixed) junto al elemento enfocado con el teclado:
+   transform: translate(x, y) y la clase .es-visible. Va a la izquierda del elemento, apuntándole. */
+#foco-flecha {
+  position: fixed; left: 0; top: 0; z-index: 90; width: 40px; height: 25px; pointer-events: none;
+  background: url(../img/brocha/foco-flecha.svg) center / contain no-repeat;
+  opacity: 0; transform: translate(-120px, -120px); transition: opacity .12s ease;
+}
+#foco-flecha.es-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { #foco-flecha { transition: none; } }

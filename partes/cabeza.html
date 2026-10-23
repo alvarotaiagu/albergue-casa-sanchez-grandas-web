@@ -1,0 +1,60 @@
+<!-- script bloqueante: clases antes del primer pintado y el puente con la cortina (partes/cortina.html, de Entrada) -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+  // el puente con la cortina: existe desde el primer momento, cargue antes quien cargue.
+  // La cortina llama a Sanchez.abrir() cuando EMPIEZA a abrirse y a Sanchez.retirarCortina() al acabar
+  // (o lanza los eventos sanchez:cortina-abre / sanchez:cortina-fuera en document);
+  // la web y los módulos usan Sanchez.alAbrirse(fn).
+  var S = window.Sanchez = window.Sanchez || {};
+  var cola = [];
+  var avisar = function (n) { try { d.dispatchEvent(new CustomEvent(n)); } catch (e) {} };
+  S.alAbrirse = function (fn) { if (S.abierta) { try { fn(); } catch (e) { console.warn(e); } } else cola.push(fn); };
+  S.abrir = function () {
+    if (S.abierta) return;
+    S.abierta = true;
+    cola.splice(0).forEach(function (fn) { try { fn(); } catch (e) { console.warn(e); } });
+    avisar('sanchez:abierta');
+  };
+  S.retirarCortina = function () {
+    if (S.cortinaFuera) return;
+    S.cortinaFuera = true;
+    clearTimeout(window.__redCortina);
+    h.classList.remove('cortina-activa');
+    h.classList.add('cortina-fuera');
+    S.abrir();
+    avisar('sanchez:fuera');
+  };
+  d.addEventListener('sanchez:cortina-abre', function () { S.abrir(); });
+  d.addEventListener('sanchez:cortina-fuera', function () { S.retirarCortina(); });
+  // red de seguridad por si main.js o la cortina no llegan: la cortina se va sola
+  window.__redCortina = setTimeout(function () { S.retirarCortina(); }, 6500);
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Petrona:ital,wght@0,400;0,600;1,400&family=Rethink+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/entrada.css">
+<link rel="stylesheet" href="css/jardin.css">
+<link rel="stylesheet" href="css/etapa.css">
+<link rel="stylesheet" href="css/reserva.css">
+<link rel="icon" href="marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#E0BF50">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<noscript><style>.cortina,#cortina{display:none!important}</style></noscript>

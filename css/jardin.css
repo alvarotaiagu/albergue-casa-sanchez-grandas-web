@@ -1,0 +1,168 @@
+/* ------------------------------------------------------------------
+   Albergue Casa Sánchez · «El jardín de hoy» (agente Jardín)
+   Todo bajo .jd / [data-modulo="jardin"]. Usa los tokens de la web con
+   var(--x, valor) por si css/estilos.css aún no existe.
+
+   El bloque entre @lamina-inicio y @lamina-fin es la parte ESTÁTICA de la
+   lámina (colores fijos de la casa, trazos, qué se ve en cada estación):
+   pruebas/jardin-exportar.mjs lo copia dentro de los SVG de img/jardin/.
+   Los colores que cambian con la estación y el tiempo los pone js/jardin.js
+   como variables --c-* en el propio <svg>.
+   ------------------------------------------------------------------ */
+
+/* @lamina-inicio */
+.jd-lamina {
+  --c-tinta: var(--pardo, #412B21);
+  --c-pared: #EFE5C9; --c-pared2: #F1EDE3; --c-teja: var(--pizarra, #33373C); --c-alero: #54483F;
+  --c-piedra1: var(--piedra, #B9AE9C); --c-piedra2: #A69B89; --c-piedra3: #CBC1B0;
+  --c-piedrao1: #6F675B; --c-piedrao2: #5D564C; --c-piedrao3: #7C7366; --c-hueco: #2E2823;
+  --c-mortero: #4A443C; --c-wp1: #7D8184; --c-wp2: #6B6F73; --c-wp3: #8F8C83; --c-wp4: #5E6367;
+  --c-madera: var(--madera, #7A5236); --c-madera2: #4F3524; --c-madera3: #A67F5B; --c-granate: #7C2B2B;
+  --c-cristal: #B5CAD2; --c-losa: #8B8F92; --c-losa2: #787C81;
+  --c-rayas: #4F8A5B; --c-blanco: #F6F1E7; --c-gris: #A09E96; --c-gris2: #7F7D77;
+  --c-hamaca: #35B5C8; --c-gato: #6B625A; --c-papel: var(--cal, #F5F0E6); --c-cereza: #B5382E; --c-sol: #FFF1A8;
+  display: block; width: 100%; height: 100%;
+}
+.jd-lamina [class*="k-"] { stroke: none; }
+.jd-lamina .k-nube { fill: var(--c-nube); }
+.jd-lamina .k-lejos { fill: var(--c-lejos); } .jd-lamina .k-lejos2 { fill: var(--c-lejos2); }
+.jd-lamina .k-seto { fill: var(--c-seto); } .jd-lamina .k-seto2 { fill: var(--c-seto2); }
+.jd-lamina .k-cesped { fill: var(--c-cesped); } .jd-lamina .k-cesped2 { fill: var(--c-cesped2); } .jd-lamina .k-cespeds { fill: var(--c-cespeds); opacity: .5; }
+.jd-lamina .k-hoja { fill: var(--c-hoja); } .jd-lamina .k-hoja2 { fill: var(--c-hoja2); } .jd-lamina .k-hoja3 { fill: var(--c-hoja3); }
+.jd-lamina .k-flor { fill: var(--c-flor); } .jd-lamina .k-flor2 { fill: var(--c-flor2); } .jd-lamina .k-magnolia { fill: var(--c-magnolia); }
+.jd-lamina .k-arb1 { fill: var(--c-arb1); } .jd-lamina .k-arb2 { fill: var(--c-arb2); }
+.jd-lamina .k-suelo { fill: var(--c-suelo); } .jd-lamina .k-cereza { fill: var(--c-cereza); }
+.jd-lamina .k-sombra { fill: var(--c-sombra); }
+.jd-lamina .k-sol { fill: var(--c-sol); }
+.jd-lamina .k-pared { fill: var(--c-pared); } .jd-lamina .k-pared2 { fill: var(--c-pared2); }
+.jd-lamina .k-teja { fill: var(--c-teja); } .jd-lamina .k-alero { fill: var(--c-alero); }
+.jd-lamina .k-piedra1 { fill: var(--c-piedra1); } .jd-lamina .k-piedra2 { fill: var(--c-piedra2); } .jd-lamina .k-piedra3 { fill: var(--c-piedra3); }
+.jd-lamina .k-piedrao1 { fill: var(--c-piedrao1); } .jd-lamina .k-piedrao2 { fill: var(--c-piedrao2); } .jd-lamina .k-piedrao3 { fill: var(--c-piedrao3); }
+.jd-lamina .k-hueco { fill: var(--c-hueco); } .jd-lamina .k-mortero { fill: var(--c-mortero); }
+.jd-lamina .k-wp1 { fill: var(--c-wp1); } .jd-lamina .k-wp2 { fill: var(--c-wp2); } .jd-lamina .k-wp3 { fill: var(--c-wp3); } .jd-lamina .k-wp4 { fill: var(--c-wp4); }
+.jd-lamina .k-madera { fill: var(--c-madera); } .jd-lamina .k-madera2 { fill: var(--c-madera2); } .jd-lamina .k-madera3 { fill: var(--c-madera3); }
+.jd-lamina .k-granate { fill: var(--c-granate); } .jd-lamina .k-cristal { fill: var(--c-cristal); }
+.jd-lamina .k-losa { fill: var(--c-losa); } .jd-lamina .k-losa2 { fill: var(--c-losa2); }
+.jd-lamina .k-rayas { fill: var(--c-rayas); } .jd-lamina .k-blanco { fill: var(--c-blanco); }
+.jd-lamina .k-gris { fill: var(--c-gris); } .jd-lamina .k-gris2 { fill: var(--c-gris2); }
+.jd-lamina .k-hamaca { fill: var(--c-hamaca); } .jd-lamina .k-gato { fill: var(--c-gato); } .jd-lamina .k-papel { fill: var(--c-papel); }
+
+/* tinta: contorno de las manchas y trazos sueltos */
+.jd-lamina .o { stroke: var(--c-tinta); stroke-width: 1.7; stroke-linejoin: round; }
+.jd-lamina .o1 { stroke: var(--c-tinta); stroke-width: 1.1; stroke-linejoin: round; }
+.jd-lamina .t, .jd-lamina .tf, .jd-lamina .tl, .jd-lamina .tx, .jd-lamina .tg, .jd-lamina .tr-i, .jd-lamina .tr-c, .jd-lamina .tr-fino { fill: none; stroke: var(--c-tinta); stroke-linecap: round; stroke-linejoin: round; }
+.jd-lamina .t { stroke-width: 2.1; }
+.jd-lamina .tf { stroke-width: 1.2; }
+.jd-lamina .tx { stroke-width: .9; opacity: .5; }
+.jd-lamina .tl { fill: none; stroke: #fff; stroke-width: 1; opacity: .2; stroke-linecap: round; }
+.jd-lamina .tg { stroke-width: 3.2; }
+.jd-lamina .tr-c { stroke: var(--c-tronco); }
+.jd-lamina .tr-fino { stroke-width: 1.4; }
+.jd-lamina .jd-cartel-t1 { font: 700 27px var(--f-titulo, 'League Spartan', system-ui, sans-serif); fill: var(--c-tinta); letter-spacing: .02em; }
+.jd-lamina .jd-cartel-t2 { font: italic 400 21px var(--f-voz, 'Petrona', Georgia, serif); fill: var(--c-tinta); }
+
+/* qué se ve en cada estación y con cada tiempo (la lámina lleva data-* en su .jd) */
+.jd-lamina .suelo-sombra { opacity: .2; }
+.jd-lamina .mota { opacity: .13; }
+.jd-lamina .moteada .sombras { opacity: 0; }
+.jd-lamina .k-sol { opacity: 0; }
+.jd-lamina .nubes-tapa { opacity: 0; }
+.jd-lamina .nubes-ligeras { opacity: 1; }
+.jd-lamina .zona { fill: transparent; stroke: none; pointer-events: all; }
+.jd-lamina .zonas { pointer-events: none; }
+.jd-lamina .zonas .zona { pointer-events: all; }
+.jd[data-aspecto="verde"] .jd-lamina .moteada .sombras { opacity: 1; }
+.jd[data-aspecto="flor"] .jd-lamina .moteada .sombras, .jd[data-aspecto="otono"] .jd-lamina .moteada .sombras { opacity: .55; }
+.jd[data-tiempo="sol"] .jd-lamina .k-sol { opacity: .3; }
+.jd[data-tiempo="sol"] .jd-lamina .mota { opacity: .18; }
+.jd[data-tiempo="nubes"] .jd-lamina .nubes-tapa, .jd[data-tiempo="lluvia"] .jd-lamina .nubes-tapa { opacity: 1; }
+.jd[data-tiempo="nubes"] .jd-lamina .nubes-ligeras, .jd[data-tiempo="lluvia"] .jd-lamina .nubes-ligeras { opacity: 0; }
+.jd[data-tiempo="nubes"] .jd-lamina .mota, .jd[data-tiempo="lluvia"] .jd-lamina .mota { opacity: .05; }
+/* @lamina-fin */
+
+/* ==================================================================
+   El módulo: marco, pie, movimiento. (Todo bajo .jd, que monta js/jardin.js)
+   ================================================================== */
+[data-modulo="jardin"] { display: block; }
+.jd {
+  position: relative; margin: 0 auto; max-width: 1170px;   /* 900 px de foto × 1,3: nunca más grande que su detalle */
+  color: var(--pardo, #412B21);
+  font-family: var(--f-texto, 'Rethink Sans', system-ui, -apple-system, 'Segoe UI', sans-serif);
+}
+.jd-marco {
+  position: relative; aspect-ratio: 12 / 7; overflow: hidden; isolation: isolate;
+  background: var(--cal, #F5F0E6);
+  border: 2px solid var(--pardo, #412B21); border-radius: 44px 44px 8px 8px;
+  box-shadow: 8px 8px 0 var(--amarillo, #E0BF50);          /* la mancha de color, desplazada, como en la lámina */
+}
+.jd-escena { position: absolute; inset: 0; }
+.jd-escena .jd-lamina { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.jd-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.jd-foto { position: absolute; inset: 0; z-index: 3; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s linear .45s; background: var(--cal, #F5F0E6); }
+.jd.ver-foto .jd-foto { opacity: 1; visibility: visible; transition: opacity .45s ease; }
+.jd-foto picture, .jd-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.jd-pie { display: grid; gap: .5rem; margin: 1.35rem 0 0; padding: 0 .25rem; max-width: 62ch; }
+.jd-pie p { margin: 0; }
+.jd-escena-txt { font: italic 400 clamp(1.15rem, 1rem + .6vw, 1.45rem)/1.3 var(--f-voz, 'Petrona', Georgia, 'Times New Roman', serif); }
+.jd-temporada { font-size: .95rem; line-height: 1.45; }
+.jd-tiempo { font-size: .98rem; line-height: 1.45; font-weight: 500; padding: .15rem 0 .15rem .85rem; border-left: 4px solid var(--amarillo, #E0BF50); font-variant-numeric: tabular-nums; }
+.jd-nota { font-size: .8rem; line-height: 1.4; opacity: .8; }
+.jd-acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .25rem !important; }
+.jd-acciones:empty { display: none; }
+.jd-btn {
+  font: 600 .92rem/1 var(--f-texto, 'Rethink Sans', system-ui, sans-serif); color: var(--pardo, #412B21); background: var(--cal, #F5F0E6);
+  min-height: 44px; padding: .55rem 1.1rem; border: 2px solid var(--pardo, #412B21); border-radius: 999px; cursor: pointer;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.jd-btn:hover { background: var(--amarillo, #E0BF50); }
+.jd-btn:active { transform: translateY(1px); }
+.jd-btn:focus-visible { outline: 3px solid var(--pardo, #412B21); outline-offset: 3px; }
+.jd-btn[aria-pressed="true"] { background: var(--amarillo, #E0BF50); }
+
+/* el árbol que se sacude gira desde el pie del tronco */
+.jd .jd-lamina .arbol, .jd .jd-lamina .copa { transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* el gato del muro: baja tras el muro y sube a veces; nada de eso si no hay movimiento */
+.jd .jd-lamina .gato { transform: translateY(100px); transition: transform .8s cubic-bezier(.2, .9, .25, 1.08); cursor: pointer; }
+.jd .jd-lamina .gato.ve { transform: translateY(0); }
+.jd[data-movimiento="no"] .jd-lamina .gato, .jd[data-aspecto="desnudo"] .jd-lamina .gato, .jd[data-tiempo="lluvia"] .jd-lamina .gato { display: none; }
+
+/* el movimiento: la copa se mece (más con viento), la sombra moteada se desliza */
+@keyframes jd-mece { from { transform: rotate(calc(var(--mece, .5deg) * -1)); } to { transform: rotate(var(--mece, .5deg)); } }
+@keyframes jd-mota { from { transform: translateX(0); } to { transform: translateX(-46px); } }
+@keyframes jd-sol { from { transform: translateX(0); } to { transform: translateX(38px); } }
+.jd[data-movimiento="si"] .jd-lamina .copa-1 { animation: jd-mece var(--t-mece, 7s) ease-in-out infinite alternate; }
+.jd[data-movimiento="si"] .jd-lamina .copa-2 { animation: jd-mece calc(var(--t-mece, 7s) * 1.31) ease-in-out -2.2s infinite alternate; }
+.jd[data-movimiento="si"] .jd-lamina .copa-3 { animation: jd-mece calc(var(--t-mece, 7s) * .83) ease-in-out -4.1s infinite alternate; }
+.jd[data-viento="1"] { --mece: 1.7deg; --t-mece: 3.6s; }
+.jd[data-movimiento="si"] .jd-lamina .moteada .sombras { animation: jd-mota 16s ease-in-out infinite alternate; }
+.jd[data-movimiento="si"] .jd-lamina .moteada .solpatch { animation: jd-sol 12s ease-in-out infinite alternate; }
+/* fuera de pantalla, quieto */
+.jd[data-visible="no"] .jd-lamina .copa, .jd[data-visible="no"] .jd-lamina .moteada .sombras, .jd[data-visible="no"] .jd-lamina .moteada .solpatch { animation-play-state: paused; }
+
+/* los colores cambian suave cuando llega el tiempo (si el navegador deja registrar las variables) */
+@property --c-cielo-a { syntax: '<color>'; inherits: true; initial-value: #BCD6E6; }
+@property --c-cielo-b { syntax: '<color>'; inherits: true; initial-value: #EFF0E4; }
+@property --c-lejos { syntax: '<color>'; inherits: true; initial-value: #8DA97E; }
+@property --c-lejos2 { syntax: '<color>'; inherits: true; initial-value: #A9C095; }
+@property --c-seto { syntax: '<color>'; inherits: true; initial-value: #40693A; }
+@property --c-seto2 { syntax: '<color>'; inherits: true; initial-value: #5C8749; }
+@property --c-cesped { syntax: '<color>'; inherits: true; initial-value: #8DB75B; }
+@property --c-cesped2 { syntax: '<color>'; inherits: true; initial-value: #A8C86F; }
+@property --c-hoja { syntax: '<color>'; inherits: true; initial-value: #6F9E46; }
+@property --c-hoja2 { syntax: '<color>'; inherits: true; initial-value: #8CBA59; }
+@property --c-hoja3 { syntax: '<color>'; inherits: true; initial-value: #4F7A3A; }
+@property --c-nube { syntax: '<color>'; inherits: true; initial-value: #FBFAF5; }
+.jd[data-movimiento="si"] .jd-lamina { transition: --c-cielo-a 1.6s ease, --c-cielo-b 1.6s ease, --c-lejos 1.6s ease, --c-lejos2 1.6s ease, --c-seto 1.6s ease, --c-seto2 1.6s ease, --c-cesped 1.6s ease, --c-cesped2 1.6s ease, --c-hoja 1.6s ease, --c-hoja2 1.6s ease, --c-hoja3 1.6s ease, --c-nube 1.6s ease; }
+.jd .jd-lamina .nubes-tapa, .jd .jd-lamina .nubes-ligeras, .jd .jd-lamina .k-sol, .jd .jd-lamina .mota { transition: opacity 1.4s ease; }
+
+@media (max-width: 699px) {
+  .jd-marco { aspect-ratio: 1 / 1; border-radius: 30px 30px 8px 8px; box-shadow: 5px 5px 0 var(--amarillo, #E0BF50); }
+  .jd-pie { margin-top: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jd *, .jd *::before, .jd *::after { animation: none !important; transition: none !important; }
+}
+/* sin movimiento (densidad sobria, movimiento reducido o movimiento:false): ni animaciones ni transiciones */
+.jd[data-movimiento="no"] *, .jd[data-movimiento="no"] *::before, .jd[data-movimiento="no"] *::after { animation: none !important; transition: none !important; }

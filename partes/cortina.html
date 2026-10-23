@@ -1,0 +1,49 @@
+<!-- ============ cortina «La flecha» (agente Entrada: partes/cortina.html + css/entrada.css + js/flecha.js) ============
+     Un brochazo azul pinta la flecha del cartel sobre pizarra; la flecha gira y apunta abajo; de su punta sale
+     el amarillo del cartel (pintura que cubre) y destapa la portada. ~2,4 s.
+     Este script va ANTES de la cortina: solo con JS se enseña (html.cortina-activa), así que sin JS no aparece
+     nunca. Expone Sanchez.cortina = { alAbrirse(fn), alRetirarse(fn), abrir(), retirar(), abierta, fuera }
+     y lanza en document los eventos «sanchez:cortina-abre» y «sanchez:cortina-fuera».
+     alAbrirse llega cuando la cortina EMPIEZA a abrirse (arranca el amarillo), no cuando acaba.
+     Red de seguridad: se retira SIEMPRE. Sin JS, con movimiento reducido, si js/flecha.js no arranca en 2,5 s y,
+     pase lo que pase, a los 8 s. Si js/flecha.js no llega, el respaldo CSS (una flecha y un círculo amarillo)
+     hace el mismo gesto en 2,4 s. -->
+<script>
+(function (d, w) {
+  var h = d.documentElement, S = w.Sanchez = w.Sanchez || {}, abierta = false, fuera = false, alAbrir = [], alFuera = [];
+  h.classList.add('js');
+  function avisar(lista, nombre) {
+    lista.splice(0).forEach(function (f) { try { f(); } catch (e) { console.warn(e); } });
+    try { d.dispatchEvent(new CustomEvent(nombre)); } catch (e) {}
+  }
+  function abrir() { if (abierta) return; abierta = true; h.classList.add('cortina-abriendo'); avisar(alAbrir, 'sanchez:cortina-abre'); }
+  function retirar() {
+    if (fuera) return;
+    fuera = true;
+    clearTimeout(red1); clearTimeout(red2);
+    var c = d.getElementById('cortina');
+    if (c) c.hidden = true;
+    h.classList.remove('cortina-activa', 'cortina-abriendo');
+    h.classList.add('cortina-fuera');
+    abrir();
+    avisar(alFuera, 'sanchez:cortina-fuera');
+  }
+  S.cortina = {
+    alAbrirse: function (f) { if (abierta) f(); else alAbrir.push(f); },
+    alRetirarse: function (f) { if (fuera) f(); else alFuera.push(f); },
+    abrir: abrir, retirar: retirar, enMarcha: false,
+    get abierta() { return abierta; }, get fuera() { return fuera; }
+  };
+  var red1 = setTimeout(function () { if (!S.cortina.enMarcha) retirar(); }, 2500);
+  var red2 = setTimeout(retirar, 8000);
+  var quieto = false;
+  try { quieto = w.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (quieto) retirar(); else h.classList.add('cortina-activa', 'con-recorrido');   // con-recorrido: css/entrada.css reserva ya el alto de la portada fijada
+})(document, window);
+</script>
+<div class="cortina" id="cortina" aria-hidden="true">
+  <canvas class="cortina__lienzo"></canvas>
+  <svg class="cortina__flecha" viewBox="0 0 160 110" focusable="false"><path d="M0 55 50 0v29h110v52H50v29z"/></svg>
+  <div class="cortina__amarillo"></div>
+</div>
+<noscript><style>.cortina{display:none!important}</style></noscript>

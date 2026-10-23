@@ -1,0 +1,19 @@
+{
+  "nota": "Generado por scripts/vectorizar-cartel.py --brocha. Texturas de 512 px sin costuras (ruido filtrado en Fourier; la piedra es un Voronoi aplastado).",
+  "semillas": {
+    "pizarra": 7,
+    "piedra": 11,
+    "madera": 5,
+    "foco-flecha": 3
+  },
+  "bytes": {
+    "pizarra": 3336,
+    "piedra": 14638,
+    "madera": 4786
+  },
+  "pincel": {
+    "semilla_cortina": 20261023,
+    "cerdas": 34,
+    "descripcion": "El modelo de cerdas (carga, secado, gota) vive en js/flecha.js con estas semillas."
+  }
+}

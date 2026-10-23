@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240" role="img" aria-labelledby="g-t">
+  <title id="g-t">Un retrato dibujado a línea de un hombre con gafas redondas, cejas arqueadas, bigote grueso y un puro, como el que cuelga enmarcado en el lavadero</title>
+  <g fill="none" stroke="#412B21" stroke-linecap="round" stroke-linejoin="round">
+    <!-- marco -->
+    <rect x="7" y="7" width="186" height="226" rx="3" fill="#F5F0E6" stroke-width="6"/>
+    <rect x="15" y="15" width="170" height="210" stroke-width="1.6"/>
+    <!-- hombros y cuello de camisa -->
+    <path d="M24 225C28 206 58 198 84 202 L102 214 L120 202C146 198 174 206 178 225" stroke-width="2.4"/>
+    <path d="M84 202L90 222M120 202L114 222" stroke-width="2"/>
+    <!-- orejas -->
+    <path d="M54 112C44 108 42 124 52 130M150 112C160 108 162 124 152 130" stroke-width="2.2"/>
+    <!-- contorno de la cara -->
+    <path d="M53 100C52 140 62 176 84 192C93 200 111 200 120 192C142 176 152 140 151 100" stroke-width="2.8"/>
+    <!-- pelo aplastado -->
+    <path d="M52 102C46 56 78 30 104 30C132 30 158 56 152 102C142 78 124 64 102 64C80 64 62 78 52 102Z" fill="#412B21" stroke-width="2"/>
+    <!-- cejas arqueadas -->
+    <path d="M60 98C68 83 90 82 99 94" stroke-width="8"/>
+    <path d="M105 94C114 82 136 83 145 98" stroke-width="8"/>
+    <!-- gafas redondas -->
+    <circle cx="79" cy="111" r="15" stroke-width="3"/>
+    <circle cx="127" cy="111" r="15" stroke-width="3"/>
+    <path d="M94 108C99 103 107 103 112 108M64 108L54 104M142 108L152 104" stroke-width="2.6"/>
+    <circle cx="80" cy="112" r="2.6" fill="#412B21" stroke="none"/>
+    <circle cx="126" cy="112" r="2.6" fill="#412B21" stroke="none"/>
+    <!-- nariz -->
+    <path d="M103 116C98 132 93 140 99 146C105 149 111 146 108 141" stroke-width="2.2"/>
+    <!-- bigote -->
+    <path d="M68 154C82 140 98 146 103 151C108 146 124 140 138 154C128 168 110 162 103 160C96 162 78 168 68 154Z" fill="#412B21" stroke-width="2"/>
+    <!-- boca y puro -->
+    <path d="M90 176C98 181 110 181 118 174" stroke-width="2.6"/>
+    <path d="M114 175L168 150" stroke-width="7"/>
+    <path d="M168 150L174 147" stroke="#A37F31" stroke-width="7"/>
+    <path d="M178 140C172 132 182 128 176 120C172 114 178 110 176 104" stroke-width="1.8"/>
+    <!-- barbilla -->
+    <path d="M92 190C99 194 108 194 115 190" stroke-width="1.8"/>
+  </g>
+</svg>

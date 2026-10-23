@@ -1,0 +1,25 @@
+<!-- ============ reservar · «Tu cama» (módulo Literas, js/reserva.js; DEMOSTRACIÓN). El HTML de dentro es el respaldo ============ -->
+<section class="sec reservar s-cal" id="reservar" aria-labelledby="reservar-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eyebrow">Reservar</p>
+      <h2 id="reservar-tit">Tu cama, <em>para la noche que llegues</em></h2>
+      <p class="sec-cab__txt">Elige la noche, la habitación y la litera, o el apartamento para dos. Si lo prefieres, llama al <a class="enlace" href="tel:{{telefono_movil_tel}}">{{telefono_movil}}</a> o escribe a <a class="enlace" href="mailto:{{correo}}">{{correo}}</a>.</p>
+      <span class="flor" data-flor="3" aria-hidden="true"></span>
+    </header>
+    <div class="reservar__modulo" data-modulo="reserva">
+      <div class="reservar__respaldo">
+        <p class="demo" role="note"><b>Demostración.</b> Así funcionará la reserva directa: las noches libres son de ejemplo, los precios son supuestos y no se envía, se guarda ni se cobra nada.</p>
+        <dl class="datos">
+          <div><dt>Litera</dt><dd>Desde <b class="cifra">{{litera}} €</b> la noche <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Apartamento para dos</dt><dd><b class="cifra">{{apartamento}} €</b> la noche <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Entrada</dt><dd>Registro a partir de {{entrada}}</dd></div>
+          <div><dt>Temporada</dt><dd>Del {{apertura}} al {{cierre}} <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Credencial</dt><dd>No es necesaria</dd></div>
+          <div><dt>Bicicletas</dt><dd>Hay un lugar cerrado para guardarlas</dd></div>
+        </dl>
+        <p class="reservar__acc"><a class="btn btn--marca" href="tel:{{telefono_movil_tel}}">Llamar al {{telefono_movil}}</a> <a class="btn btn--hueco" href="mailto:{{correo}}">Escribir</a></p>
+      </div>
+    </div>
+  </div>
+</section>

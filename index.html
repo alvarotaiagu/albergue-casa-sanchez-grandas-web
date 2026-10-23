@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Albergue Casa Sánchez · albergue con jardín en Grandas de Salime, Camino Primitivo</title>
+<meta name="description" content="Albergue privado del Camino Primitivo en el centro de Grandas de Salime (Asturias): 16 literas en 4 habitaciones, un apartamento para dos, jardín, cocina equipada y bicicletero cerrado.">
+<meta property="og:title" content="Albergue Casa Sánchez · Grandas de Salime">
+<meta property="og:description" content="Un albergue con jardín en el centro de Grandas de Salime: 16 literas en 4 habitaciones y un apartamento para dos, en pleno Camino Primitivo.">
+<link rel="preload" as="image" type="image/avif" imagesrcset="img/fotos/entrada-cartel-480.avif 480w, img/fotos/entrada-cartel-800.avif 800w, img/fotos/entrada-cartel-1024.avif 1024w, img/fotos/entrada-cartel-1080.avif 1080w" imagesizes="(max-width: 899px) 66vw, 46vw" fetchpriority="high">
+<!-- script bloqueante: clases antes del primer pintado y el puente con la cortina (partes/cortina.html, de Entrada) -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+  // el puente con la cortina: existe desde el primer momento, cargue antes quien cargue.
+  // La cortina llama a Sanchez.abrir() cuando EMPIEZA a abrirse y a Sanchez.retirarCortina() al acabar
+  // (o lanza los eventos sanchez:cortina-abre / sanchez:cortina-fuera en document);
+  // la web y los módulos usan Sanchez.alAbrirse(fn).
+  var S = window.Sanchez = window.Sanchez || {};
+  var cola = [];
+  var avisar = function (n) { try { d.dispatchEvent(new CustomEvent(n)); } catch (e) {} };
+  S.alAbrirse = function (fn) { if (S.abierta) { try { fn(); } catch (e) { console.warn(e); } } else cola.push(fn); };
+  S.abrir = function () {
+    if (S.abierta) return;
+    S.abierta = true;
+    cola.splice(0).forEach(function (fn) { try { fn(); } catch (e) { console.warn(e); } });
+    avisar('sanchez:abierta');
+  };
+  S.retirarCortina = function () {
+    if (S.cortinaFuera) return;
+    S.cortinaFuera = true;
+    clearTimeout(window.__redCortina);
+    h.classList.remove('cortina-activa');
+    h.classList.add('cortina-fuera');
+    S.abrir();
+    avisar('sanchez:fuera');
+  };
+  d.addEventListener('sanchez:cortina-abre', function () { S.abrir(); });
+  d.addEventListener('sanchez:cortina-fuera', function () { S.retirarCortina(); });
+  // red de seguridad por si main.js o la cortina no llegan: la cortina se va sola
+  window.__redCortina = setTimeout(function () { S.retirarCortina(); }, 6500);
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Petrona:ital,wght@0,400;0,600;1,400&family=Rethink+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=75a11032">
+<link rel="stylesheet" href="css/entrada.css?v=44b11ba0">
+<link rel="stylesheet" href="css/jardin.css?v=37a7f2cc">
+<link rel="stylesheet" href="css/etapa.css?v=f934359b">
+<link rel="stylesheet" href="css/reserva.css?v=2f5e6b3e">
+<link rel="icon" href="marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#E0BF50">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<noscript><style>.cortina,#cortina{display:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hostel",
+  "name": "Albergue Casa Sánchez",
+  "description": "Albergue privado del Camino Primitivo en el centro de Grandas de Salime: 16 literas en 4 dormitorios con taquillas, un apartamento para dos, cocina equipada, salón comedor, terraza y jardín.",
+  "image": "img/og.jpg",
+  "telephone": ["+34 626 665 118", "+34 985 781 150"],
+  "address": { "@type": "PostalAddress", "streetAddress": "C/ El Salvador, s/n", "postalCode": "33730", "addressLocality": "Grandas de Salime", "addressRegion": "Asturias", "addressCountry": "ES" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 43.218074, "longitude": -6.876649 },
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Cocina equipada", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Jardín", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lavadora y secadora", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Bicicletero cerrado", "value": true }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- ============ cortina «La flecha» (agente Entrada: partes/cortina.html + css/entrada.css + js/flecha.js) ============
+     Un brochazo azul pinta la flecha del cartel sobre pizarra; la flecha gira y apunta abajo; de su punta sale
+     el amarillo del cartel (pintura que cubre) y destapa la portada. ~2,4 s.
+     Este script va ANTES de la cortina: solo con JS se enseña (html.cortina-activa), así que sin JS no aparece
+     nunca. Expone Sanchez.cortina = { alAbrirse(fn), alRetirarse(fn), abrir(), retirar(), abierta, fuera }
+     y lanza en document los eventos «sanchez:cortina-abre» y «sanchez:cortina-fuera».
+     alAbrirse llega cuando la cortina EMPIEZA a abrirse (arranca el amarillo), no cuando acaba.
+     Red de seguridad: se retira SIEMPRE. Sin JS, con movimiento reducido, si js/flecha.js no arranca en 2,5 s y,
+     pase lo que pase, a los 8 s. Si js/flecha.js no llega, el respaldo CSS (una flecha y un círculo amarillo)
+     hace el mismo gesto en 2,4 s. -->
+<script>
+(function (d, w) {
+  var h = d.documentElement, S = w.Sanchez = w.Sanchez || {}, abierta = false, fuera = false, alAbrir = [], alFuera = [];
+  h.classList.add('js');
+  function avisar(lista, nombre) {
+    lista.splice(0).forEach(function (f) { try { f(); } catch (e) { console.warn(e); } });
+    try { d.dispatchEvent(new CustomEvent(nombre)); } catch (e) {}
+  }
+  function abrir() { if (abierta) return; abierta = true; h.classList.add('cortina-abriendo'); avisar(alAbrir, 'sanchez:cortina-abre'); }
+  function retirar() {
+    if (fuera) return;
+    fuera = true;
+    clearTimeout(red1); clearTimeout(red2);
+    var c = d.getElementById('cortina');
+    if (c) c.hidden = true;
+    h.classList.remove('cortina-activa', 'cortina-abriendo');
+    h.classList.add('cortina-fuera');
+    abrir();
+    avisar(alFuera, 'sanchez:cortina-fuera');
+  }
+  S.cortina = {
+    alAbrirse: function (f) { if (abierta) f(); else alAbrir.push(f); },
+    alRetirarse: function (f) { if (fuera) f(); else alFuera.push(f); },
+    abrir: abrir, retirar: retirar, enMarcha: false,
+    get abierta() { return abierta; }, get fuera() { return fuera; }
+  };
+  var red1 = setTimeout(function () { if (!S.cortina.enMarcha) retirar(); }, 2500);
+  var red2 = setTimeout(retirar, 8000);
+  var quieto = false;
+  try { quieto = w.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (quieto) retirar(); else h.classList.add('cortina-activa', 'con-recorrido');   // con-recorrido: css/entrada.css reserva ya el alto de la portada fijada
+})(document, window);
+</script>
+<div class="cortina" id="cortina" aria-hidden="true">
+  <canvas class="cortina__lienzo"></canvas>
+  <svg class="cortina__flecha" viewBox="0 0 160 110" focusable="false"><path d="M0 55 50 0v29h110v52H50v29z"/></svg>
+  <div class="cortina__amarillo"></div>
+</div>
+<noscript><style>.cortina{display:none!important}</style></noscript>
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera fija (desde que se cierra la cortina): «Casa Sánchez» con la letra del cartel, las paradas y el teléfono ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="marca" href="./" aria-label="Albergue Casa Sánchez, a la portada"><img class="marca__letra" src="marca/letra.svg" width="128" height="34" alt="Casa Sánchez"></a>
+    <nav class="cab__nav" aria-label="Principal">
+      <a href="#casa">La casa</a>
+      <a href="#jardin">El jardín</a>
+      <a href="#dentro">Dentro</a>
+      <a href="#etapa">La etapa</a>
+      <a href="#reservar">Reservar</a>
+    </nav>
+    <a class="cab__tel" href="tel:+34626665118"><span class="vh">Teléfono: </span>626 665 118</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+  <div class="menu-movil" id="menu-movil" aria-hidden="true">
+    <nav aria-label="Menú">
+      <a href="#casa"><small>Piedra, pizarra y jardín</small>La casa</a>
+      <a href="#jardin"><small>Lo que más cuentan las reseñas</small>El jardín</a>
+      <a href="#dentro"><small>Literas, cocina, lo que hay y lo que no</small>Dentro</a>
+      <a href="#etapa"><small>De Berducedo a Grandas</small>La etapa</a>
+      <a href="#pueblo"><small>Farmacia, tiendas, museo y presa</small>El pueblo</a>
+      <a href="#reservar"><small>Tu cama o el apartamento</small>Reservar</a>
+      <a href="#llegar"><small>C/ El Salvador · Grandas de Salime</small>Cómo llegar</a>
+    </nav>
+    <p class="menu-movil__tel"><a href="tel:+34626665118">626 665 118</a> · <a href="tel:+34985781150">985 781 150</a></p>
+  </div>
+</header>
+
+<main id="principal">
+
+  <!-- ============ 2. portada · «El cartel» (módulo cartel, js/cartel.js: el cartel vectorial que se aleja hasta la foto real). El HTML de dentro es el respaldo ============ -->
+  <section class="portada s-amarillo" id="portada" aria-labelledby="portada-tit">
+    <div class="portada__in">
+      <div class="portada__cartel" data-modulo="cartel">
+        <div class="panel-marco">
+          <picture data-foto="entrada-cartel"><source type="image/avif" srcset="img/fotos/entrada-cartel-480.avif 480w, img/fotos/entrada-cartel-800.avif 800w, img/fotos/entrada-cartel-1024.avif 1024w, img/fotos/entrada-cartel-1080.avif 1080w" sizes="(max-width: 899px) 66vw, 46vw"><source type="image/webp" srcset="img/fotos/entrada-cartel-480.webp 480w, img/fotos/entrada-cartel-800.webp 800w, img/fotos/entrada-cartel-1024.webp 1024w, img/fotos/entrada-cartel-1080.webp 1080w" sizes="(max-width: 899px) 66vw, 46vw"><img src="img/fotos/entrada-cartel-800.jpg" srcset="img/fotos/entrada-cartel-480.jpg 480w, img/fotos/entrada-cartel-800.jpg 800w, img/fotos/entrada-cartel-1024.jpg 1024w, img/fotos/entrada-cartel-1080.jpg 1080w" sizes="(max-width: 899px) 66vw, 46vw" width="1080" height="1080" alt="El cartel amarillo de la entrada, clavado en la cerca de palos delante del jardín: «Casa Sánchez, Apartamentos rurales» y «Albergue turístico», con una flecha azul" fetchpriority="high" loading="eager" decoding="async"></picture>
+        </div>
+      </div>
+      <div class="portada-texto">
+        <p class="eyebrow">Albergue turístico · Camino Primitivo · Asturias</p>
+        <h1 class="portada__tit" id="portada-tit">Un albergue con jardín en el centro de Grandas de Salime</h1>
+        <p class="portada__baj">16 literas en 4 habitaciones <i aria-hidden="true">·</i> un apartamento para dos <i aria-hidden="true">·</i> Camino Primitivo</p>
+        <div class="portada__acc">
+          <a class="btn btn--marca" href="#reservar">Ver fechas</a>
+          <a class="btn btn--hueco" href="tel:+34626665118">Llamar <span class="mono">626 665 118</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="pizarra" data-hacia="#casa" aria-hidden="true"></div>
+
+  <!-- ============ 4. la casa ============ -->
+  <section class="sec casa s-cal" id="casa" aria-labelledby="casa-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">La casa</p>
+        <h2 id="casa-tit" class="rev">Una casa baja de piedra y pizarra, <em>junto al parque</em> <span class="flor" data-flor="1" aria-hidden="true"></span></h2>
+        <p class="sec-cab__txt">El albergue está en la calle El Salvador, en pleno centro de Grandas de Salime, detrás del parque. Abrió en 2016 en una vieja casa de piedra que antes era casa rural, y tiene jardín, terraza y un porche con hamaca.</p>
+      </header>
+
+      <div class="casa__rejilla">
+        <figure class="casa__f casa__f--grande rev">
+          <button type="button" class="foto-btn" data-visor="casa-flor" aria-label="Ver más grande: la casa con la magnolia en flor"><picture data-foto="casa-flor"><source type="image/avif" srcset="img/fotos/casa-flor-480.avif 480w, img/fotos/casa-flor-800.avif 800w, img/fotos/casa-flor-900.avif 900w" sizes="(max-width: 899px) 100vw, 56vw"><source type="image/webp" srcset="img/fotos/casa-flor-480.webp 480w, img/fotos/casa-flor-800.webp 800w, img/fotos/casa-flor-900.webp 900w" sizes="(max-width: 899px) 100vw, 56vw"><img src="img/fotos/casa-flor-800.jpg" srcset="img/fotos/casa-flor-480.jpg 480w, img/fotos/casa-flor-800.jpg 800w, img/fotos/casa-flor-900.jpg 900w" sizes="(max-width: 899px) 100vw, 56vw" width="900" height="505" alt="La casa baja de piedra y pizarra con la magnolia en flor a la izquierda, la terraza de madera con barandas granates y un cielo azul" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>La casa en primavera</b>Piedra, pizarra, la magnolia en flor y la terraza de madera.</figcaption>
+        </figure>
+        <figure class="casa__f casa__f--porche rev">
+          <button type="button" class="foto-btn" data-visor="porche-hamaca" aria-label="Ver más grande: el porche con la hamaca"><picture data-foto="porche-hamaca"><source type="image/avif" srcset="img/fotos/porche-hamaca-480.avif 480w, img/fotos/porche-hamaca-800.avif 800w, img/fotos/porche-hamaca-900.avif 900w" sizes="(max-width: 899px) 100vw, 34vw"><source type="image/webp" srcset="img/fotos/porche-hamaca-480.webp 480w, img/fotos/porche-hamaca-800.webp 800w, img/fotos/porche-hamaca-900.webp 900w" sizes="(max-width: 899px) 100vw, 34vw"><img src="img/fotos/porche-hamaca-800.jpg" srcset="img/fotos/porche-hamaca-480.jpg 480w, img/fotos/porche-hamaca-800.jpg 800w, img/fotos/porche-hamaca-900.jpg 900w" sizes="(max-width: 899px) 100vw, 34vw" width="900" height="505" alt="Un porche de vigas con una hamaca azul turquesa, el suelo de pizarra y, a la izquierda, una máquina expendedora con la foto de una cascada" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El porche</b>Con la hamaca, el suelo de pizarra y la máquina de agua y refrescos.</figcaption>
+        </figure>
+        <figure class="casa__f casa__f--toldo rev">
+          <button type="button" class="foto-btn" data-visor="porche-toldo" aria-label="Ver más grande: la fachada con el toldo granate"><picture data-foto="porche-toldo"><source type="image/avif" srcset="img/fotos/porche-toldo-480.avif 480w, img/fotos/porche-toldo-640.avif 640w" sizes="(max-width: 899px) 70vw, 26vw"><source type="image/webp" srcset="img/fotos/porche-toldo-480.webp 480w, img/fotos/porche-toldo-640.webp 640w" sizes="(max-width: 899px) 70vw, 26vw"><img src="img/fotos/porche-toldo-640.jpg" srcset="img/fotos/porche-toldo-480.jpg 480w, img/fotos/porche-toldo-640.jpg 640w" sizes="(max-width: 899px) 70vw, 26vw" width="640" height="640" alt="La fachada con el toldo granate donde se lee «Casa Sánchez», las mesas de madera en el porche y el suelo de losas de pizarra" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El toldo</b>Con el nombre de la casa.</figcaption>
+        </figure>
+        <figure class="casa__f casa__f--noche rev">
+          <button type="button" class="foto-btn" data-visor="casa-noche" aria-label="Ver más grande: la casa de noche"><picture data-foto="casa-noche"><source type="image/avif" srcset="img/fotos/casa-noche-480.avif 480w, img/fotos/casa-noche-800.avif 800w, img/fotos/casa-noche-1024.avif 1024w, img/fotos/casa-noche-1080.avif 1080w" sizes="(max-width: 899px) 70vw, 26vw"><source type="image/webp" srcset="img/fotos/casa-noche-480.webp 480w, img/fotos/casa-noche-800.webp 800w, img/fotos/casa-noche-1024.webp 1024w, img/fotos/casa-noche-1080.webp 1080w" sizes="(max-width: 899px) 70vw, 26vw"><img src="img/fotos/casa-noche-800.jpg" srcset="img/fotos/casa-noche-480.jpg 480w, img/fotos/casa-noche-800.jpg 800w, img/fotos/casa-noche-1024.jpg 1024w, img/fotos/casa-noche-1080.jpg 1080w" sizes="(max-width: 899px) 70vw, 26vw" width="1080" height="1080" alt="La casa de piedra de noche, con una luz cálida en la pared y mesas de madera en el exterior" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>De noche</b>La luz cálida del porche.</figcaption>
+        </figure>
+      </div>
+
+      <div class="casa__voz">
+        <blockquote class="juan rev">
+          <p>«Lo mejor del albergue es Juan […] Hablé con él y es muy amable y honrado.»</p>
+          <footer><b>Un peregrino italiano</b> <span class="mono">Wise Pilgrim · julio de 2026 · traducido del italiano</span></footer>
+        </blockquote>
+        <ul class="cifras rev" aria-label="La casa en cifras">
+          <li><b class="cifra">16</b><span>literas</span></li>
+          <li><b class="cifra">4</b><span>habitaciones</span></li>
+          <li><b class="cifra">1</b><span>apartamento para dos</span></li>
+          <li><b class="cifra">3</b><span>duchas</span></li>
+          <li><b class="cifra">2016</b><span>año en que abrió</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ solo en la versión sobria: la casa de un vistazo ============ -->
+  <section class="sec vistazo s-cal" id="vistazo" aria-labelledby="vistazo-tit">
+    <div class="env">
+      <h2 class="vistazo__tit" id="vistazo-tit">Casa Sánchez, de un vistazo</h2>
+      <table class="vistazo__tabla">
+        <tbody>
+          <tr><th scope="row">Plazas</th><td>16 literas en 4 habitaciones, más un apartamento para 2 (18 plazas en total)</td></tr>
+          <tr><th scope="row">Habitaciones</th><td>4, con taquillas individuales con llave. Cuántas literas hay en cada una: por confirmar</td></tr>
+          <tr><th scope="row">Baños</th><td>3 duchas y 3 inodoros</td></tr>
+          <tr><th scope="row">Apartamento</th><td>Para dos personas</td></tr>
+          <tr><th scope="row">Precios</th><td>Litera desde 20 € la noche; apartamento, 90 € (por confirmar)</td></tr>
+          <tr><th scope="row">Temporada</th><td>Del 15 de abril al 3 de noviembre (por confirmar)</td></tr>
+          <tr><th scope="row">Entrada</th><td>Registro a partir de las 12:00. La credencial no es necesaria</td></tr>
+          <tr><th scope="row">Lo que hay</th><td>Cocina totalmente equipada, salón comedor, terraza, jardín, lavadora y secadora (4 € cada una), wifi gratuita, agua caliente, taquillas con llave, bicicletero cerrado, botiquín y enchufes para cargar</td></tr>
+          <tr><th scope="row">Lo que no hay</th><td>Calefacción, toallas ni jabón, desayuno ni comidas</td></tr>
+          <tr><th scope="row">La siguiente etapa</th><td>Grandas de Salime – A Fonsagrada, 25,5 km: Castro a 5,2 km y la entrada en Galicia a 13,3 km</td></tr>
+          <tr><th scope="row">Registro de turismo</th><td>No consta</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="piedra" data-hacia="#jardin" aria-hidden="true"></div>
+
+  <!-- ============ 5. «El jardín de hoy» (módulo jardin, js/jardin.js). El HTML de dentro es el respaldo ============ -->
+  <section class="sec jardin s-cal2" id="jardin" aria-labelledby="jardin-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">El jardín</p>
+        <h2 id="jardin-tit" class="rev">El jardín de hoy <span class="flor" data-flor="2" aria-hidden="true"></span></h2>
+        <p class="sec-cab__txt">Es lo que más repiten las reseñas: «un jardín espectacular», «un lugar idílico rodeado de vegetación». Hay césped con caminos de losa de pizarra, bancos de madera, tumbonas y la magnolia que florece junto a la terraza.</p>
+      </header>
+
+      <div class="jardin__modulo" data-modulo="jardin">
+        <figure class="jardin__respaldo">
+          <button type="button" class="foto-btn" data-visor="jardin-casa" aria-label="Ver más grande: el jardín con el cerezo y la casa al fondo"><picture data-foto="jardin-casa"><source type="image/avif" srcset="img/fotos/jardin-casa-480.avif 480w, img/fotos/jardin-casa-800.avif 800w, img/fotos/jardin-casa-900.avif 900w" sizes="(max-width: 899px) 100vw, 62vw"><source type="image/webp" srcset="img/fotos/jardin-casa-480.webp 480w, img/fotos/jardin-casa-800.webp 800w, img/fotos/jardin-casa-900.webp 900w" sizes="(max-width: 899px) 100vw, 62vw"><img src="img/fotos/jardin-casa-800.jpg" srcset="img/fotos/jardin-casa-480.jpg 480w, img/fotos/jardin-casa-800.jpg 800w, img/fotos/jardin-casa-900.jpg 900w" sizes="(max-width: 899px) 100vw, 62vw" width="900" height="505" alt="El jardín con el cerezo, el césped, el camino de pizarra, un banco y una tumbona de rayas verdes; al fondo, la casa baja de piedra" loading="lazy" decoding="async"></picture></button>
+          <figcaption>El jardín, con la casa al fondo.</figcaption>
+        </figure>
+      </div>
+
+      <div class="jardin__cuenta">
+        <div class="jardin__flora rev">
+          <h3>Lo que crece</h3>
+          <p>Según el Instagram del albergue y las reseñas: dos magnolias (una de flor crema y otra morada), cerezo y manzanos, rododendros, azaleas, camelias y hortensias. Y un <b>regueiro</b>, un canal de agua del jardín donde los peregrinos meten los pies.</p>
+          <figure class="jardin__regueiro">
+            <button type="button" class="foto-btn" data-visor="regueiro" aria-label="Ver más grande: el regueiro del jardín"><picture data-foto="regueiro"><source type="image/avif" srcset="img/fotos/regueiro-480.avif 480w, img/fotos/regueiro-640.avif 640w" sizes="(max-width: 899px) 100vw, 420px"><source type="image/webp" srcset="img/fotos/regueiro-480.webp 480w, img/fotos/regueiro-640.webp 640w" sizes="(max-width: 899px) 100vw, 420px"><img src="img/fotos/regueiro-640.jpg" srcset="img/fotos/regueiro-480.jpg 480w, img/fotos/regueiro-640.jpg 640w" sizes="(max-width: 899px) 100vw, 420px" width="640" height="190" alt="El regueiro: un canal de madera y piedra con agua corriendo entre la hierba del jardín" loading="lazy" decoding="async"></picture></button>
+            <figcaption>El regueiro del jardín (Instagram del albergue, mayo de 2023).</figcaption>
+          </figure>
+        </div>
+        <ul class="jardin__citas rev">
+          <li><q>Un albergue para descansar. Con un jardín espectacular! Todo para sentirte como en casa.</q><span class="mono">Begoña · Gronze · octubre de 2022</span></li>
+          <li><q>Local com jardim maravilhoso com espreguiçadeiras. Cama confortável, bom atendimento</q><span class="mono">Ángel · Gronze · junio de 2025 · «jardín maravilloso con tumbonas»</span></li>
+          <li><q>Un lugar idílico rodeado de vegetación. Muy limpio.</q><span class="mono">Un peregrino · Gronze · julio de 2022</span></li>
+        </ul>
+      </div>
+
+      <div class="estaciones">
+        <h3 class="estaciones__tit rev">El jardín en cuatro estaciones <span class="mono">fotos del Instagram del albergue</span></h3>
+        <div class="estaciones__fila">
+          <figure class="rev">
+            <button type="button" class="foto-btn" data-visor="magnolia" aria-label="Ver más grande: la magnolia en flor"><picture data-foto="magnolia"><source type="image/avif" srcset="img/fotos/magnolia-480.avif 480w, img/fotos/magnolia-800.avif 800w, img/fotos/magnolia-1024.avif 1024w, img/fotos/magnolia-1080.avif 1080w" sizes="(max-width: 699px) 46vw, 24vw"><source type="image/webp" srcset="img/fotos/magnolia-480.webp 480w, img/fotos/magnolia-800.webp 800w, img/fotos/magnolia-1024.webp 1024w, img/fotos/magnolia-1080.webp 1080w" sizes="(max-width: 699px) 46vw, 24vw"><img src="img/fotos/magnolia-800.jpg" srcset="img/fotos/magnolia-480.jpg 480w, img/fotos/magnolia-800.jpg 800w, img/fotos/magnolia-1024.jpg 1024w, img/fotos/magnolia-1080.jpg 1080w" sizes="(max-width: 699px) 46vw, 24vw" width="1080" height="1080" alt="Las flores crema de la magnolia sobre las ramas, con la casa y la terraza detrás" loading="lazy" decoding="async"></picture></button>
+            <figcaption><b>Primavera</b>Abril de 2018</figcaption>
+          </figure>
+          <figure class="rev">
+            <button type="button" class="foto-btn" data-visor="jardin-sol" aria-label="Ver más grande: las tumbonas bajo el árbol"><picture data-foto="jardin-sol"><source type="image/avif" srcset="img/fotos/jardin-sol-480.avif 480w, img/fotos/jardin-sol-640.avif 640w" sizes="(max-width: 699px) 46vw, 24vw"><source type="image/webp" srcset="img/fotos/jardin-sol-480.webp 480w, img/fotos/jardin-sol-640.webp 640w" sizes="(max-width: 699px) 46vw, 24vw"><img src="img/fotos/jardin-sol-640.jpg" srcset="img/fotos/jardin-sol-480.jpg 480w, img/fotos/jardin-sol-640.jpg 640w" sizes="(max-width: 699px) 46vw, 24vw" width="640" height="640" alt="Tres tumbonas de rayas verdes bajo un árbol grande, con el jardín a pleno sol" loading="lazy" decoding="async"></picture></button>
+            <figcaption><b>A pleno sol</b>Mayo de 2019</figcaption>
+          </figure>
+          <figure class="rev">
+            <button type="button" class="foto-btn" data-visor="arbol-amarillo" aria-label="Ver más grande: el árbol de hojas amarillas"><picture data-foto="arbol-amarillo"><source type="image/avif" srcset="img/fotos/arbol-amarillo-480.avif 480w, img/fotos/arbol-amarillo-800.avif 800w, img/fotos/arbol-amarillo-1024.avif 1024w, img/fotos/arbol-amarillo-1080.avif 1080w" sizes="(max-width: 699px) 46vw, 24vw"><source type="image/webp" srcset="img/fotos/arbol-amarillo-480.webp 480w, img/fotos/arbol-amarillo-800.webp 800w, img/fotos/arbol-amarillo-1024.webp 1024w, img/fotos/arbol-amarillo-1080.webp 1080w" sizes="(max-width: 699px) 46vw, 24vw"><img src="img/fotos/arbol-amarillo-800.jpg" srcset="img/fotos/arbol-amarillo-480.jpg 480w, img/fotos/arbol-amarillo-800.jpg 800w, img/fotos/arbol-amarillo-1024.jpg 1024w, img/fotos/arbol-amarillo-1080.jpg 1080w" sizes="(max-width: 699px) 46vw, 24vw" width="1080" height="1080" alt="Un árbol grande con las hojas amarillas y verdes de otoño" loading="lazy" decoding="async"></picture></button>
+            <figcaption><b>Otoño</b>Noviembre de 2021</figcaption>
+          </figure>
+          <figure class="rev">
+            <button type="button" class="foto-btn" data-visor="jardin-nieve" aria-label="Ver más grande: el jardín con nieve"><picture data-foto="jardin-nieve"><source type="image/avif" srcset="img/fotos/jardin-nieve-480.avif 480w, img/fotos/jardin-nieve-640.avif 640w" sizes="(max-width: 699px) 46vw, 24vw"><source type="image/webp" srcset="img/fotos/jardin-nieve-480.webp 480w, img/fotos/jardin-nieve-640.webp 640w" sizes="(max-width: 699px) 46vw, 24vw"><img src="img/fotos/jardin-nieve-640.jpg" srcset="img/fotos/jardin-nieve-480.jpg 480w, img/fotos/jardin-nieve-640.jpg 640w" sizes="(max-width: 699px) 46vw, 24vw" width="640" height="640" alt="El jardín y el pueblo cubiertos de nieve vistos desde la terraza" loading="lazy" decoding="async"></picture></button>
+            <figcaption><b>Invierno</b>Enero de 2023</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="madera" data-hacia="#dentro" aria-hidden="true"></div>
+
+  <!-- ============ 6. dentro ============ -->
+  <section class="sec dentro s-pizarra" id="dentro" aria-labelledby="dentro-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">Dentro</p>
+        <h2 id="dentro-tit" class="rev">Dieciséis literas, <em>una cocina para todos</em></h2>
+        <p class="sec-cab__txt">16 literas en 4 dormitorios, con taquillas individuales con llave. Hay 3 duchas, una cocina totalmente equipada, un salón comedor, la terraza, el jardín, una lavandería y un lugar cerrado para guardar las bicicletas.</p>
+      </header>
+
+      <div class="dentro__rejilla">
+        <figure class="dentro__f dentro__f--lit rev">
+          <button type="button" class="foto-btn" data-visor="dormitorio-literas" aria-label="Ver más grande: un dormitorio con literas"><picture data-foto="dormitorio-literas"><source type="image/avif" srcset="img/fotos/dormitorio-literas-480.avif 480w, img/fotos/dormitorio-literas-640.avif 640w" sizes="(max-width: 699px) 100vw, 34vw"><source type="image/webp" srcset="img/fotos/dormitorio-literas-480.webp 480w, img/fotos/dormitorio-literas-640.webp 640w" sizes="(max-width: 699px) 100vw, 34vw"><img src="img/fotos/dormitorio-literas-640.jpg" srcset="img/fotos/dormitorio-literas-480.jpg 480w, img/fotos/dormitorio-literas-640.jpg 640w" sizes="(max-width: 699px) 100vw, 34vw" width="640" height="640" alt="Un dormitorio claro con literas metálicas blancas, taquillas de colores, suelo de madera clara y una ventana" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>Un dormitorio</b>Literas blancas, taquillas de colores y suelo de madera clara.</figcaption>
+        </figure>
+        <figure class="dentro__f dentro__f--lit2 rev">
+          <button type="button" class="foto-btn" data-visor="dormitorio-2" aria-label="Ver más grande: otro dormitorio"><picture data-foto="dormitorio-2"><source type="image/avif" srcset="img/fotos/dormitorio-2-480.avif 480w, img/fotos/dormitorio-2-640.avif 640w" sizes="(max-width: 699px) 70vw, 24vw"><source type="image/webp" srcset="img/fotos/dormitorio-2-480.webp 480w, img/fotos/dormitorio-2-640.webp 640w" sizes="(max-width: 699px) 70vw, 24vw"><img src="img/fotos/dormitorio-2-640.jpg" srcset="img/fotos/dormitorio-2-480.jpg 480w, img/fotos/dormitorio-2-640.jpg 640w" sizes="(max-width: 699px) 70vw, 24vw" width="640" height="640" alt="Un dormitorio con una litera blanca, un armario de madera y luz cálida" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>Otro dormitorio</b>Con una litera y un armario.</figcaption>
+        </figure>
+        <figure class="dentro__f dentro__f--bano rev">
+          <button type="button" class="foto-btn" data-visor="habitacion-bano" aria-label="Ver más grande: el baño y una litera"><picture data-foto="habitacion-bano"><source type="image/avif" srcset="img/fotos/habitacion-bano-480.avif 480w, img/fotos/habitacion-bano-800.avif 800w, img/fotos/habitacion-bano-900.avif 900w" sizes="(max-width: 699px) 100vw, 40vw"><source type="image/webp" srcset="img/fotos/habitacion-bano-480.webp 480w, img/fotos/habitacion-bano-800.webp 800w, img/fotos/habitacion-bano-900.webp 900w" sizes="(max-width: 699px) 100vw, 40vw"><img src="img/fotos/habitacion-bano-800.jpg" srcset="img/fotos/habitacion-bano-480.jpg 480w, img/fotos/habitacion-bano-800.jpg 800w, img/fotos/habitacion-bano-900.jpg 900w" sizes="(max-width: 699px) 100vw, 40vw" width="900" height="505" alt="Un baño con gresite rojo y ocre y un lavabo de pie, con la puerta abierta a una habitación con una litera blanca de colchón rojo" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El baño</b>Gresite rojo y ocre, y la litera al otro lado de la puerta.</figcaption>
+        </figure>
+        <figure class="dentro__f dentro__f--cocina rev">
+          <button type="button" class="foto-btn" data-visor="cocina" aria-label="Ver más grande: la cocina"><picture data-foto="cocina"><source type="image/avif" srcset="img/fotos/cocina-480.avif 480w, img/fotos/cocina-800.avif 800w, img/fotos/cocina-900.avif 900w" sizes="(max-width: 699px) 100vw, 44vw"><source type="image/webp" srcset="img/fotos/cocina-480.webp 480w, img/fotos/cocina-800.webp 800w, img/fotos/cocina-900.webp 900w" sizes="(max-width: 699px) 100vw, 44vw"><img src="img/fotos/cocina-800.jpg" srcset="img/fotos/cocina-480.jpg 480w, img/fotos/cocina-800.jpg 800w, img/fotos/cocina-900.jpg 900w" sizes="(max-width: 699px) 100vw, 44vw" width="900" height="505" alt="La cocina con el fuego de ladrillo visto, la campana negra, las cortinas rosas bajo la encimera y una mesa redonda blanca con sillas verdes" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>La cocina</b>Totalmente equipada: el fuego de ladrillo, la campana y la mesa redonda.</figcaption>
+        </figure>
+        <figure class="dentro__f dentro__f--cocina2 rev">
+          <button type="button" class="foto-btn" data-visor="cocina-2" aria-label="Ver más grande: la cocina desde el otro lado"><picture data-foto="cocina-2"><source type="image/avif" srcset="img/fotos/cocina-2-480.avif 480w, img/fotos/cocina-2-640.avif 640w" sizes="(max-width: 699px) 70vw, 24vw"><source type="image/webp" srcset="img/fotos/cocina-2-480.webp 480w, img/fotos/cocina-2-640.webp 640w" sizes="(max-width: 699px) 70vw, 24vw"><img src="img/fotos/cocina-2-640.jpg" srcset="img/fotos/cocina-2-480.jpg 480w, img/fotos/cocina-2-640.jpg 640w" sizes="(max-width: 699px) 70vw, 24vw" width="640" height="640" alt="La cocina vista desde el otro lado, con la mesa redonda blanca, las sillas verdes, una mesa larga de madera y la encimera con el frigorífico" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>Del otro lado</b>La mesa redonda y la encimera.</figcaption>
+        </figure>
+        <figure class="dentro__f dentro__f--salon rev">
+          <button type="button" class="foto-btn" data-visor="salon" aria-label="Ver más grande: el salón comedor"><picture data-foto="salon"><source type="image/avif" srcset="img/fotos/salon-480.avif 480w, img/fotos/salon-640.avif 640w" sizes="(max-width: 699px) 70vw, 24vw"><source type="image/webp" srcset="img/fotos/salon-480.webp 480w, img/fotos/salon-640.webp 640w" sizes="(max-width: 699px) 70vw, 24vw"><img src="img/fotos/salon-640.jpg" srcset="img/fotos/salon-480.jpg 480w, img/fotos/salon-640.jpg 640w" sizes="(max-width: 699px) 70vw, 24vw" width="640" height="640" alt="El salón con vigas de madera, una ventana de madera abierta al jardín, un sofá azul y un radiador" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El salón comedor</b>Vigas, ventana al jardín y un sofá azul.</figcaption>
+        </figure>
+      </div>
+
+      <div class="dentro__que">
+        <section class="hay rev" aria-labelledby="hay-tit">
+          <h3 id="hay-tit">Lo que hay</h3>
+          <ul>
+            <li>Cocina totalmente equipada, con frigorífico y microondas</li>
+            <li>Salón comedor, terraza y jardín</li>
+            <li>Taquillas individuales con llave</li>
+            <li>3 duchas y agua caliente</li>
+            <li>Lavadora (4 €) y secadora (4 €), con lavadero y tendedero</li>
+            <li>Wifi gratuita y enchufes para cargar</li>
+            <li>Bicicletero cerrado</li>
+            <li>Máquina de agua y refrescos, y botiquín</li>
+            <li>La credencial no es necesaria</li>
+          </ul>
+        </section>
+        <section class="nohay rev" aria-labelledby="nohay-tit">
+          <h3 id="nohay-tit">Lo que no hay</h3>
+          <ul>
+            <li><b>Calefacción.</b> Es lo que dice su ficha actual; en 2019 y 2022 decía que sí.</li>
+            <li><b>Toallas ni jabón.</b> Se llevan de casa.</li>
+            <li><b>Desayuno ni comidas.</b> Para eso, el pueblo: más abajo.</li>
+            <li><b>Café</b> en la máquina de la entrada: solo agua y refrescos.</li>
+          </ul>
+        </section>
+        <figure class="groucho rev">
+          <img class="groucho__dibujo" src="img/groucho.svg" width="200" height="240" alt="Un retrato a línea de un hombre con gafas redondas, cejas arqueadas, bigote y puro, como el que cuelga en el lavadero" loading="lazy" decoding="async">
+          <figcaption>En el lavadero vigila Groucho.</figcaption>
+        </figure>
+      </div>
+
+      <div class="dentro__lav rev">
+        <figure>
+          <button type="button" class="foto-btn" data-visor="lavadero" aria-label="Ver más grande: el lavadero"><picture data-foto="lavadero"><source type="image/avif" srcset="img/fotos/lavadero-480.avif 480w, img/fotos/lavadero-800.avif 800w, img/fotos/lavadero-1024.avif 1024w, img/fotos/lavadero-1190.avif 1190w" sizes="(max-width: 699px) 100vw, 46vw"><source type="image/webp" srcset="img/fotos/lavadero-480.webp 480w, img/fotos/lavadero-800.webp 800w, img/fotos/lavadero-1024.webp 1024w, img/fotos/lavadero-1190.webp 1190w" sizes="(max-width: 699px) 100vw, 46vw"><img src="img/fotos/lavadero-800.jpg" srcset="img/fotos/lavadero-480.jpg 480w, img/fotos/lavadero-800.jpg 800w, img/fotos/lavadero-1024.jpg 1024w, img/fotos/lavadero-1190.jpg 1190w" sizes="(max-width: 699px) 100vw, 46vw" width="1190" height="668" alt="El lavadero con un fregadero blanco, un friso de gresite verde y ocre, un tablero con una palangana verde y, colgado de un madero, un retrato enmarcado en blanco y negro" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El lavadero</b>Gresite verde y ocre, un fregadero blanco y, sobre él, el retrato enmarcado.</figcaption>
+        </figure>
+      </div>
+
+      <div class="apartamento rev" id="apartamento">
+        <h3>El apartamento para dos</h3>
+        <p>Aparte de las literas, la casa tiene un apartamento de dos plazas. La noche: 90 € <span class="sup">por confirmar</span></p>
+        <p>Un huésped contó en Google: <q>la cocina estaba totalmente equipada, el apartamento amplio […] en el exterior hay terraza al aire libre</q>. <span class="mono">Un huésped, en Google (vía Tripadvisor)</span></p>
+        <p><a class="btn btn--marca" href="#reservar">Reservar el apartamento</a></p>
+      </div>
+
+      <div class="precios rev">
+        <h3>Precios y temporada</h3>
+        <p>Litera desde <b class="cifra">20 €</b> la noche. Apartamento, <b class="cifra">90 €</b>. Abierto del 15 de abril al 3 de noviembre. Registro a partir de las 12:00. <span class="sup">por confirmar</span></p>
+        <p class="precios__fuente">Precios: ficha de Alberguescaminosantiago, actualizada con datos de la propiedad el 19-10-2026. Temporada: según la misma ficha (19-10-2026); en 2022 y 2023 abrieron a primeros de mayo.</p>
+      </div>
+      <p class="fotos-fuente">Fotos: la ficha del albergue en alberguescaminosantiago.com y su cuenta de Instagram (2017–2025).</p>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="piedra" data-hacia="#etapa" aria-hidden="true"></div>
+
+  <!-- ============ 7. «La etapa» (módulo etapa, js/etapa.js). El HTML de dentro es el respaldo ============ -->
+  <section class="sec etapa s-cal" id="etapa" aria-labelledby="etapa-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">La etapa</p>
+        <h2 id="etapa-tit" class="rev">La etapa que llega a Grandas</h2>
+        <p class="sec-cab__txt">Desde Berducedo son 20,4 km: dos subidas moderadas, una larga bajada al embalse, la presa y, al final, la subida a Grandas por carretera y atajos. Gronze la resume así: «en 8,2 km pasamos de los 1.040 metros de altitud a los 210. Una bajada pirenaica».</p>
+      </header>
+      <div class="etapa__modulo" data-modulo="etapa">
+        <div class="etapa__respaldo">
+          <ul class="etapa__resumen">
+            <li><b class="cifra">20,4 km</b><span>de Berducedo a Grandas de Salime (Gronze)</span></li>
+            <li><b class="cifra">+663 m</b><span>de subida</span></li>
+            <li><b class="cifra">−1.017 m</b><span>de bajada: de los 1.040 m del alto a los 210 m del embalse</span></li>
+          </ul>
+          <p class="etapa__fuente">La bajada al embalse, la presa y la subida a Grandas: el perfil completo, con los kilómetros y la altitud, se dibuja aquí con el scroll (hace falta JavaScript).</p>
+          <p class="etapa__llegada">Has llegado. Entrada desde las 12:00.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. el embalse y la presa (franja corta, sin 3D) ============ -->
+  <section class="sec embalse s-piedra" id="embalse" aria-labelledby="embalse-tit">
+    <div class="env embalse__in">
+      <figure class="embalse__foto rev">
+        <button type="button" class="foto-btn" data-visor="embalse" aria-label="Ver más grande: el embalse con la presa al fondo"><picture data-foto="embalse"><source type="image/avif" srcset="img/fotos/embalse-480.avif 480w, img/fotos/embalse-640.avif 640w" sizes="(max-width: 899px) 66vw, 46vw"><source type="image/webp" srcset="img/fotos/embalse-480.webp 480w, img/fotos/embalse-640.webp 640w" sizes="(max-width: 899px) 66vw, 46vw"><img src="img/fotos/embalse-640.jpg" srcset="img/fotos/embalse-480.jpg 480w, img/fotos/embalse-640.jpg 640w" sizes="(max-width: 899px) 66vw, 46vw" width="640" height="640" alt="El embalse de Salime, de agua azul oscura entre laderas de monte, con la presa al fondo a la izquierda y arbustos de flor blanca en primer plano" loading="lazy" decoding="async"></picture></button>
+        <figcaption>El embalse, con la presa al fondo. Instagram del albergue, 7 de abril de 2023.</figcaption>
+      </figure>
+      <div class="embalse__txt">
+        <p class="eyebrow">El embalse y la presa</p>
+        <h2 id="embalse-tit" class="rev">Al fondo del valle, <em>la presa de Salime</em></h2>
+        <ul class="embalse__datos rev">
+          <li><b class="cifra">128 m</b><span>de altura (132 m sobre los cimientos)</span></li>
+          <li><b class="cifra">1955</b><span>inauguración oficial, el 24 de agosto; las obras, entre 1946 y 1954 según el Ayuntamiento</span></li>
+          <li><b class="cifra">250 m</b><span>de longitud en la coronación</span></li>
+        </ul>
+        <p class="rev">En su día fue «la mayor presa de España y la segunda de Europa». Bajo el embalse quedaron pueblos, puentes, iglesias y cementerios. La etapa la cruza por la carretera de la presa.</p>
+        <p class="rev">La central guarda arte de los Vaquero: el conjunto de 12 relieves de hormigón de Joaquín Vaquero Palacios y el mural de 60 × 5 m de su hijo, Joaquín Vaquero Turcios, en la sala de turbinas.</p>
+        <p class="embalse__fuente">Fuentes: Wikipedia («Embalse de Salime») y el Ayuntamiento de Grandas de Salime.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="madera" data-hacia="#pueblo" aria-hidden="true"></div>
+
+  <!-- ============ 9. el pueblo ============ -->
+  <section class="sec pueblo s-cal" id="pueblo" aria-labelledby="pueblo-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">El pueblo</p>
+        <h2 id="pueblo-tit" class="rev">Todo a menos de 300 metros</h2>
+        <p class="sec-cab__txt">Grandas de Salime tiene unos 383 habitantes en la villa, y casi todo lo que necesita un peregrino queda cerca del albergue. Distancias en línea recta desde el albergue, según OpenStreetMap.</p>
+      </header>
+
+      <div class="pueblo__listas">
+        <section class="lista rev" aria-labelledby="l-servicios">
+          <h3 id="l-servicios">Servicios</h3>
+          <ul>
+            <li><span>Cajero (Caja Rural)</span><b class="mono">73 m</b></li>
+            <li><span>Farmacia Rodríguez</span><b class="mono">130 m</b></li>
+            <li><span>Centro de Salud</span><b class="mono">223 m</b></li>
+            <li><span>Fonte d'El Cardo (agua potable)</span><b class="mono">189 m</b></li>
+            <li><span>Gasolinera Galp</span><b class="mono">269 m</b></li>
+          </ul>
+        </section>
+        <section class="lista rev" aria-labelledby="l-tiendas">
+          <h3 id="l-tiendas">Tiendas</h3>
+          <ul>
+            <li><span>Ferretería La Llave</span><b class="mono">53 m</b></li>
+            <li><span>Restrepo Ultramarinos (bar y tienda)</span><b class="mono">96 m</b></li>
+            <li><span>Alimentación Martínez</span><b class="mono">114 m</b></li>
+            <li><span>Carnicería Naveiras</span><b class="mono">150 m</b></li>
+            <li><span>Panadería Casariego (desde 1960, horno de leña)</span><b class="mono">167 m</b></li>
+            <li><span>Supermercado Otero y Otero</span><b class="mono">198 m</b></li>
+            <li><span>Repostería ArtesAna</span><b class="mono">223 m</b></li>
+          </ul>
+        </section>
+        <section class="lista rev" aria-labelledby="l-comer">
+          <h3 id="l-comer">Para comer y beber</h3>
+          <ul>
+            <li><span>Bar Occidente (pulpo y tapas, frente a la colegiata)</span><b class="mono">36 m</b></li>
+            <li><span>Café La Barra</span><b class="mono">75 m</b></li>
+            <li><span>Café-Bar La Esquina</span><b class="mono">94 m</b></li>
+            <li><span>Restaurante La Parrilla</span><b class="mono">106 m</b></li>
+            <li><span>Bar Francisquín</span><b class="mono">126 m</b></li>
+            <li><span>Café de Jaime</span><b class="mono">142 m</b></li>
+            <li><span>Restaurante A Reigada</span><b class="mono">183 m</b></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="descanso">
+        <h3 class="descanso__tit rev">Para el día de descanso</h3>
+        <div class="descanso__rejilla">
+          <article class="rev">
+            <figure>
+              <button type="button" class="foto-btn" data-visor="colegiata" aria-label="Ver más grande: la colegiata de San Salvador"><picture data-foto="colegiata"><source type="image/avif" srcset="img/fotos/colegiata-480.avif 480w, img/fotos/colegiata-750.avif 750w" sizes="(max-width: 899px) 100vw, 30vw"><source type="image/webp" srcset="img/fotos/colegiata-480.webp 480w, img/fotos/colegiata-750.webp 750w" sizes="(max-width: 899px) 100vw, 30vw"><img src="img/fotos/colegiata-750.jpg" srcset="img/fotos/colegiata-480.jpg 480w, img/fotos/colegiata-750.jpg 750w" sizes="(max-width: 899px) 100vw, 30vw" width="750" height="750" alt="La colegiata de San Salvador vista desde arriba, con su torre, los tejados de pizarra, el pórtico de arcos y el pueblo detrás" loading="lazy" decoding="async"></picture></button>
+            </figure>
+            <h4>La iglesia de San Salvador <span class="mono">a 55 m</span></h4>
+            <p>Una iglesia del siglo XII surgida al paso del Camino. Con el tiempo se le añadió el pórtico «para dar cobijo a los peregrinos». Conserva la portada románica, con cuatro arquivoltas.</p>
+          </article>
+          <article class="rev">
+            <h4>Museo Etnográfico «Pepe el Ferreiro» <span class="mono">a 199 m</span></h4>
+            <p>Fundado en 1984 con la colección de José María Naveiras, «Pepe el Ferreiro». Más de 3.000 m² en tres edificios, con molino, hórreo y panera, y la cocina de lareira, la escuela, la fragua y la barbería. Está en la Avenida de Ferreiro, 17.</p>
+          </article>
+          <article class="rev">
+            <h4>La presa y el embalse</h4>
+            <p>Los miradores de la margen derecha (Mirador del Embalse, Boca de la Ballena y Mirador de Salime) y la central, con sus relieves y su mural. <a class="enlace" href="#embalse">Más arriba</a>.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="siguiente rev">
+        <h3>La etapa siguiente: Grandas de Salime – A Fonsagrada</h3>
+        <table class="tabla-etapa">
+          <thead><tr><th scope="col">Punto</th><th scope="col">km desde Grandas</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Castro, junto al castro y el museo del Chao Samartín</th><td>5,2</td></tr>
+            <tr><th scope="row">Penafonte (Peñafuente)</th><td>9,8</td></tr>
+            <tr><th scope="row">Entrada en Galicia, en el Alto del Acebo</th><td>13,3</td></tr>
+            <tr><th scope="row">A Fonsagrada</th><td>25,5</td></tr>
+          </tbody>
+        </table>
+        <p class="etapa__fuente">Kilómetros sobre el trazado de OpenStreetMap. Gronze da 25,2 km y «la subida, larga, pero suave y progresiva, al Alto del Acebo».</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. lo que dicen ============ -->
+  <section class="sec opiniones s-amarillo" id="opiniones" aria-labelledby="opiniones-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">Lo que dicen</p>
+        <h2 id="opiniones-tit" class="rev">Lo mejor, <em>la gente</em></h2>
+        <p class="sec-cab__txt">Palabras de quienes han pasado por aquí, tal como las escribieron.</p>
+      </header>
+      <div class="citas">
+        <figure class="cita cita--grande rev">
+          <blockquote><p>«Hay lugares donde uno duerme y luego están esos lugares donde el cuerpo realmente puede descansar. Casa Sánchez fue eso para nosotros.»</p></blockquote>
+          <figcaption><b>Tania</b><span class="mono">Google · 2026</span></figcaption>
+        </figure>
+        <figure class="cita rev">
+          <blockquote><p>«Juan, Ricardo y Celia son unos magníficos anfitriones y mejores personas. El albergue es un remanso de paz para el camino. Imprescindible en Grandas.»</p></blockquote>
+          <figcaption><b>Sandra</b><span class="mono">Google · 2025</span></figcaption>
+        </figure>
+        <figure class="cita rev">
+          <blockquote><p>«[…] posiblemente las dos personas más amables y con mayor hospitalidad que he conocido a lo largo de los diferentes caminos […] el camino lo conforma gente como ustedes!»</p></blockquote>
+          <figcaption><b>Ricki</b><span class="mono">Gronze · agosto de 2025</span></figcaption>
+        </figure>
+        <figure class="cita rev">
+          <blockquote><p>«Un albergue para descansar. Con un jardín espectacular! Todo para sentirte como en casa. Los dueños son muy amables y cercanos.»</p></blockquote>
+          <figcaption><b>Begoña</b><span class="mono">Gronze · octubre de 2022</span></figcaption>
+        </figure>
+        <figure class="cita rev">
+          <blockquote><p>«Unas instalaciones muy adecuadas para el descanso del peregrino. Dispone de un jardin que se puede utilizar. Los propietarios atentos a las necesidades del peregrino.»</p></blockquote>
+          <figcaption><b>Un peregrino</b><span class="mono">Gronze · octubre de 2025</span></figcaption>
+        </figure>
+        <figure class="cita rev">
+          <blockquote><p>«El lugar es maravilloso, coqueto, limpio y acogedor. Hospitalera muy atenta. Zona de secado al aire libre.»</p></blockquote>
+          <figcaption><b>Rakel</b><span class="mono">Gronze · julio de 2022</span></figcaption>
+        </figure>
+      </div>
+      <div class="opiniones__pie rev">
+        <p class="opiniones__nota"><span class="mono">En Google</span><b class="cifra">4,2</b> sobre 5, con 105 reseñas</p>
+        <a class="enlace" href="https://maps.google.com/?cid=16680076346105364475" rel="noopener" target="_blank">Leer las reseñas en Google</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="flecha" data-modulo="flecha" data-superficie="pizarra" data-hacia="#reservar" aria-hidden="true"></div>
+
+  <!-- ============ reservar · «Tu cama» (módulo Literas, js/reserva.js; DEMOSTRACIÓN). El HTML de dentro es el respaldo ============ -->
+<section class="sec reservar s-cal" id="reservar" aria-labelledby="reservar-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eyebrow">Reservar</p>
+      <h2 id="reservar-tit">Tu cama, <em>para la noche que llegues</em></h2>
+      <p class="sec-cab__txt">Elige la noche, la habitación y la litera, o el apartamento para dos. Si lo prefieres, llama al <a class="enlace" href="tel:+34626665118">626 665 118</a> o escribe a <a class="enlace" href="mailto:alberguecasasanchez@gmail.com">alberguecasasanchez@gmail.com</a>.</p>
+      <span class="flor" data-flor="3" aria-hidden="true"></span>
+    </header>
+    <div class="reservar__modulo" data-modulo="reserva">
+      <div class="reservar__respaldo">
+        <p class="demo" role="note"><b>Demostración.</b> Así funcionará la reserva directa: las noches libres son de ejemplo, los precios son supuestos y no se envía, se guarda ni se cobra nada.</p>
+        <dl class="datos">
+          <div><dt>Litera</dt><dd>Desde <b class="cifra">20 €</b> la noche <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Apartamento para dos</dt><dd><b class="cifra">90 €</b> la noche <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Entrada</dt><dd>Registro a partir de las 12:00</dd></div>
+          <div><dt>Temporada</dt><dd>Del 15 de abril al 3 de noviembre <span class="sup">por confirmar</span></dd></div>
+          <div><dt>Credencial</dt><dd>No es necesaria</dd></div>
+          <div><dt>Bicicletas</dt><dd>Hay un lugar cerrado para guardarlas</dd></div>
+        </dl>
+        <p class="reservar__acc"><a class="btn btn--marca" href="tel:+34626665118">Llamar al 626 665 118</a> <a class="btn btn--hueco" href="mailto:alberguecasasanchez@gmail.com">Escribir</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- ============ cómo llegar ============ -->
+<section class="sec llegar s-pizarra" id="llegar" aria-labelledby="llegar-tit">
+  <div class="env llegar__in">
+    <div class="llegar__txt">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2 id="llegar-tit">En la calle El Salvador, <em>detrás del parque</em></h2>
+      <address class="llegar__dir">
+        Albergue Casa Sánchez<br>
+        C/ El Salvador, s/n<br>
+        33730 Grandas de Salime (Asturias)
+      </address>
+      <ul class="como">
+        <li><b>Andando.</b> Grandas de Salime es el final de la etapa que baja desde Berducedo y cruza la presa: <a class="enlace" href="#etapa">mira la etapa</a>. El albergue está en el centro del pueblo, a 55 m de la colegiata de San Salvador.</li>
+        <li><b>En coche.</b> En pleno centro, detrás del parque. La gasolinera Galp (Avenida de Galicia) está a unos 270 m y el área de autocaravanas (C/ Pedro de Pedre), a unos 300 m, en línea recta.</li>
+      </ul>
+      <ul class="contacto">
+        <li><a href="tel:+34626665118"><b class="mono">626 665 118</b><span>Móvil</span></a></li>
+        <li><a href="tel:+34985781150"><b class="mono">985 781 150</b><span>Fijo</span></a></li>
+        <li><a href="mailto:alberguecasasanchez@gmail.com"><b>alberguecasasanchez@gmail.com</b><span>Correo</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=43.218074%2C-6.876649" rel="noopener" target="_blank"><b>Abrir en Google Maps</b><span>Para ir en coche</span></a></li>
+      </ul>
+    </div>
+    <div class="mapa" id="mapa">
+      <div class="map-consent" id="mapa-consent">
+        <svg class="map-consent__flecha" viewBox="0 0 120 70" aria-hidden="true" focusable="false"><path d="M10 36C34 30 60 38 84 33L82 20 112 38 83 56 85 43C62 47 34 41 11 47Z"/></svg>
+        <p>El mapa es de Google y, al cargarlo, Google puede guardar cookies en tu navegador.</p>
+        <button type="button" class="btn btn--marca" id="mapa-btn">Ver el mapa</button>
+        <p class="map-consent__coord mono">43.218074 · -6.876649</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ pie: el cartel completo, sobre la madera de la cerca (lo monta el módulo cartel, js/cartel.js); la web pone el hueco ============ -->
+<footer class="pie s-madera" id="pie">
+  <div class="env">
+    <div class="pie__cartel-fila">
+      <div class="pie__cartel" data-modulo="cartel-pie">
+        <!-- respaldo: el cartel real, recortado de la foto de la entrada -->
+        <picture data-foto="cartel-recorte"><source type="image/avif" srcset="img/fotos/cartel-recorte-350.avif 350w" sizes="350px"><source type="image/webp" srcset="img/fotos/cartel-recorte-350.webp 350w" sizes="350px"><img src="img/fotos/cartel-recorte-350.jpg" srcset="img/fotos/cartel-recorte-350.jpg 350w" sizes="350px" width="350" height="204" alt="El cartel amarillo de la entrada: Casa Sánchez, Apartamentos rurales, Albergue turístico, con una flecha azul" loading="lazy" decoding="async"></picture>
+      </div>
+      <p class="pie__frase">Este es el cartel de la entrada. <span>Si lo ves en la cerca, has llegado.</span></p>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2 class="pie__tit">Albergue Casa Sánchez</h2>
+        <p>Albergue privado del Camino Primitivo, abierto desde 2016, con 16 literas en 4 habitaciones y un apartamento para dos.</p>
+        <p>C/ El Salvador, s/n<br>33730 Grandas de Salime (Asturias)</p>
+      </div>
+      <div>
+        <h2 class="pie__tit">Reservar</h2>
+        <p><a href="tel:+34626665118" class="mono">626 665 118</a><br><a href="tel:+34985781150" class="mono">985 781 150</a><br><a href="mailto:alberguecasasanchez@gmail.com">alberguecasasanchez@gmail.com</a></p>
+        <a class="btn btn--marca" href="#reservar">Ver fechas</a>
+      </div>
+      <div>
+        <h2 class="pie__tit">Por aquí</h2>
+        <p><a href="#casa">La casa</a><br><a href="#dentro">Dentro</a><br><a href="#etapa">La etapa</a><br><a href="#pueblo">El pueblo</a><br><a href="#llegar">Cómo llegar</a></p>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> Albergue Casa Sánchez · Grandas de Salime, Asturias</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso y, durante 30 minutos, el tiempo que le pide a Open-Meteo (sin cookies). Las letras vienen de Google Fonts y el mapa de Google solo se carga si lo pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--marca" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="cartel" aria-pressed="true">Cartel</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->
+
+<!-- el foco del teclado: una flechita azul a brochazo junto al elemento enfocado (la coloca main.js) -->
+<span id="foco-flecha" aria-hidden="true"></span>
+
+<!-- visor de fotos: se abre por el NOMBRE de la foto, no por su puesto -->
+<dialog class="visor" id="visor" aria-label="Foto">
+  <figure class="visor__fig">
+    <img id="visor-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="1024" height="768">
+    <figcaption id="visor-pie"></figcaption>
+  </figure>
+  <button type="button" class="visor__btn visor__btn--ant" id="visor-ant" aria-label="Foto anterior">‹</button>
+  <button type="button" class="visor__btn visor__btn--sig" id="visor-sig" aria-label="Foto siguiente">›</button>
+  <button type="button" class="visor__cerrar" id="visor-cerrar">Cerrar</button>
+  <p class="visor__n mono" id="visor-n" aria-live="polite"></p>
+</dialog>
+
+<!-- librerías (jsDelivr, con versión fija): Lenis suaviza el scroll; GSAP y ScrollTrigger los usan los módulos -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<!-- los módulos (cada uno en su archivo; si falta alguno, construir.mjs quita su etiqueta y se queda el respaldo del HTML) -->
+<script src="js/cartel.js?v=68b0216b" defer></script>
+<script src="js/flecha.js?v=6b5d1e50" defer></script>
+<script src="js/jardin.js?v=e15f6ba4" defer></script>
+<script src="js/etapa.js?v=992c53f5" defer></script>
+<script src="js/reserva.js?v=4f693563" defer></script>
+<!-- la web -->
+<script src="js/main.js?v=5da60f1e" defer></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!-- ============ cómo llegar ============ -->
+<section class="sec llegar s-pizarra" id="llegar" aria-labelledby="llegar-tit">
+  <div class="env llegar__in">
+    <div class="llegar__txt">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2 id="llegar-tit">En la calle El Salvador, <em>detrás del parque</em></h2>
+      <address class="llegar__dir">
+        Albergue Casa Sánchez<br>
+        C/ El Salvador, s/n<br>
+        33730 Grandas de Salime (Asturias)
+      </address>
+      <ul class="como">
+        <li><b>Andando.</b> Grandas de Salime es el final de la etapa que baja desde Berducedo y cruza la presa: <a class="enlace" href="#etapa">mira la etapa</a>. El albergue está en el centro del pueblo, a 55 m de la colegiata de San Salvador.</li>
+        <li><b>En coche.</b> En pleno centro, detrás del parque. La gasolinera Galp (Avenida de Galicia) está a unos 270 m y el área de autocaravanas (C/ Pedro de Pedre), a unos 300 m, en línea recta.</li>
+      </ul>
+      <ul class="contacto">
+        <li><a href="tel:{{telefono_movil_tel}}"><b class="mono">{{telefono_movil}}</b><span>Móvil</span></a></li>
+        <li><a href="tel:{{telefono_fijo_tel}}"><b class="mono">{{telefono_fijo}}</b><span>Fijo</span></a></li>
+        <li><a href="mailto:{{correo}}"><b>{{correo}}</b><span>Correo</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query={{lat}}%2C{{lng}}" rel="noopener" target="_blank"><b>Abrir en Google Maps</b><span>Para ir en coche</span></a></li>
+      </ul>
+    </div>
+    <div class="mapa" id="mapa">
+      <div class="map-consent" id="mapa-consent">
+        <svg class="map-consent__flecha" viewBox="0 0 120 70" aria-hidden="true" focusable="false"><path d="M10 36C34 30 60 38 84 33L82 20 112 38 83 56 85 43C62 47 34 41 11 47Z"/></svg>
+        <p>El mapa es de Google y, al cargarlo, Google puede guardar cookies en tu navegador.</p>
+        <button type="button" class="btn btn--marca" id="mapa-btn">Ver el mapa</button>
+        <p class="map-consent__coord mono">{{lat}} · {{lng}}</p>
+      </div>
+    </div>
+  </div>
+</section>

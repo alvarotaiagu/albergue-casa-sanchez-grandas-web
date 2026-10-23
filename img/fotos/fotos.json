@@ -1,0 +1,515 @@
+[
+ {
+  "nombre": "entrada-cartel",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2017-12-15_Bcu68zMB-Le.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "entrada-cartel-b",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_03-1.jpg",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "cartel-recorte",
+  "anchos": [
+   350
+  ],
+  "ancho": 350,
+  "alto": 204,
+  "origen": "fotos/instagram/grandes/2017-12-15_Bcu68zMB-Le.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": {
+   "left": 340,
+   "top": 194,
+   "width": 350,
+   "height": 204
+  }
+ },
+ {
+  "nombre": "casa-flor",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_01.jpg",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "jardin-casa",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_02.jpg",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "jardin-tumbonas",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_05.webp",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "porche-hamaca",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_08.webp",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "lavadero",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1190
+  ],
+  "ancho": 1190,
+  "alto": 668,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_04.webp",
+  "origenAncho": 1190,
+  "origenAlto": 668,
+  "recorte": null
+ },
+ {
+  "nombre": "habitacion-bano",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_06.webp",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "cocina",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 505,
+  "origen": "fotos/directorio/Albergue_Casa_Sanchez_Grandas_de_Salime_Asturias_Camino_Primitivo_07.webp",
+  "origenAncho": 900,
+  "origenAlto": 505,
+  "recorte": null
+ },
+ {
+  "nombre": "cocina-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2017-10-02_BZv4ixDhVze.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "salon",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2017-10-02_BZv4183hCRv.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "dormitorio-literas",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2017-10-30_Ba4t4xthrsj.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "dormitorio-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2017-10-30_Ba4tkMohW70.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "porche-toldo",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2017-10-02_BZv7wBdBYQ2.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "casa-noche",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2017-10-29_Ba2VnnbBQtK.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "casa-nieve",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2018-02-06_Be366d_B31s.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "magnolia",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2018-04-21_Bh1H83MBx6X.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "magnolia-barandilla",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2021-04-08_CNZgv-XFDf3.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "magnolia-ramas",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2022-04-26_CczA30GKXbG.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "cerezo-flor",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-04-06_CqtEHkFMVzL.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "rododendros",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-05-01_Crt78f4tdkW.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "rododendros-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-05-01_Crt8Ce4tfxV.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "arbol-rosa",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2025-04-26_DI6gE33MJxf.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "jardin-sol",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2019-05-22_Bxwp_KECwt7.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "jardin-septiembre",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2022-10-01_CjLAEl0MEwz.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "arbol-ocre",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2019-11-23_B5NWSw0iEkK.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "arbol-amarillo",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2021-11-07_CV_aSSbsif-.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "nieve-ramas",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2018-02-07_Be45tQbhiD6.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "jardin-nieve",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-01-18_Cnj4kbSM-Rn.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "regueiro",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 190,
+  "origen": "fotos/instagram/2023-05-14_CsOp4rrMNM7.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": {
+   "left": 0,
+   "top": 450,
+   "width": 640,
+   "height": 190
+  }
+ },
+ {
+  "nombre": "azalea",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-05-05_Cr3hT5WM1lv.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "poste-camino",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2021-07-24_CRucAEQsovD.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "flor-naranja",
+  "anchos": [
+   480,
+   800,
+   1024,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "fotos/instagram/grandes/2021-08-23_CS7lo3IMNx3.jpg",
+  "origenAncho": 1080,
+  "origenAlto": 1080,
+  "recorte": null
+ },
+ {
+  "nombre": "embalse",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2023-04-07_CqvtrF4sgnd.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "embalse-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 640,
+  "origen": "fotos/instagram/2024-01-09_C14tUOfs3V-.jpg",
+  "origenAncho": 640,
+  "origenAlto": 640,
+  "recorte": null
+ },
+ {
+  "nombre": "colegiata",
+  "anchos": [
+   480,
+   750
+  ],
+  "ancho": 750,
+  "alto": 750,
+  "origen": "fotos/instagram/grandes/2017-11-26_Bb90EjYBHD9.jpg",
+  "origenAncho": 750,
+  "origenAlto": 750,
+  "recorte": null
+ }
+]

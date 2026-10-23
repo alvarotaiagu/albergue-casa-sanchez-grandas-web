@@ -1,0 +1,23 @@
+{
+  "_nota": "UN SOLO SITIO para los datos que cambian o son dudosos (ref/DATOS-CASA-SANCHEZ.md, «Contradicciones»). construir.mjs sustituye {{clave}} en el HTML. Lo marcado `supuesto` va también a PENDIENTES.md. El motor de reservas tiene los suyos (TARIFAS en js/reserva.js): si cambian aquí, cambiarlos allí.",
+  "litera": "20",
+  "apartamento": "90",
+  "fuente_precios": "ficha de Alberguescaminosantiago, actualizada con datos de la propiedad el 19-10-2026",
+  "apertura": "15 de abril",
+  "cierre": "3 de noviembre",
+  "fuente_temporada": "Temporada: según la misma ficha (19-10-2026); en 2022 y 2023 abrieron a primeros de mayo",
+  "entrada": "las 12:00",
+  "lavadora": "4",
+  "secadora": "4",
+  "telefono_movil": "626 665 118",
+  "telefono_movil_tel": "+34626665118",
+  "telefono_fijo": "985 781 150",
+  "telefono_fijo_tel": "+34985781150",
+  "correo": "alberguecasasanchez@gmail.com",
+  "plazas": "16",
+  "dormitorios": "4",
+  "duchas": "3",
+  "lat": "43.218074",
+  "lng": "-6.876649",
+  "santiago_km": ""
+}

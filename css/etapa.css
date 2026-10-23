@@ -1,0 +1,129 @@
+/* ------------------------------------------------------------------
+   Albergue Casa Sánchez · módulo «La etapa» (agente Ruta) · js/etapa.js
+
+   El corte del terreno, como una guía de papel: tinta parda sobre cal, el
+   perfil relleno de pizarra, cotas en Petrona, cifras tabulares en Rethink Sans.
+   La flecha es azul (#291886) y es lo único azul. Todo bajo [data-modulo="etapa"].
+   Tokens de la web con respaldo: --pardo --cal --pizarra --azul --madera
+   --f-txt --f-voz --cab.
+
+   Estados (data-estado en .etapa):
+     fijo    la escena queda sticky bajo la cabecera y la pista da el recorrido
+     libre   sin sticky: la escena pasa por la pantalla
+     quieto  sin movimiento: el perfil entero y la flecha en la cancilla
+   ------------------------------------------------------------------ */
+[data-modulo="etapa"] .etapa {
+  --et-tinta: var(--pardo, #412B21);
+  --et-tinta-2: #6A5144;                  /* tinta más clara: 6,3:1 sobre cal */
+  --et-papel: var(--cal, #F5F0E6);
+  --et-pizarra: var(--pizarra, #33373C);
+  --et-azul: var(--azul, #291886);
+  --et-madera: var(--madera, #7A5236);
+  --et-cab: var(--cab, 72px);
+  --et-txt: var(--f-txt, 'Rethink Sans', system-ui, -apple-system, 'Segoe UI', sans-serif);
+  --et-voz: var(--f-voz, 'Petrona', Georgia, 'Times New Roman', serif);
+  --et-esc: max(480px, calc(100svh - var(--et-cab)));
+  --et-rec: 230svh;                        /* recorrido del scroll mientras la escena está fijada */
+  position: relative;
+  color: var(--et-tinta);
+  font-family: var(--et-txt);
+  text-align: left;
+}
+@media (max-width: 719px) { [data-modulo="etapa"] .etapa { --et-rec: 180svh; } }
+[data-modulo="etapa"] .etapa-respaldo[hidden] { display: none; }
+
+/* texto solo para lectores de pantalla */
+[data-modulo="etapa"] .etapa-sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ---------- pista y escena ---------- */
+[data-modulo="etapa"] .etapa-escena {
+  display: flex; flex-direction: column; gap: clamp(8px, 1.6svh, 16px);
+  padding-block: clamp(8px, 1.6svh, 16px);
+  background: var(--et-papel);
+}
+[data-modulo="etapa"] .etapa[data-estado="fijo"] .etapa-pista { height: calc(var(--et-esc) + var(--et-rec)); }
+[data-modulo="etapa"] .etapa[data-estado="fijo"] .etapa-escena { position: sticky; top: var(--et-cab); height: var(--et-esc); }
+[data-modulo="etapa"] .etapa-lienzo { position: relative; flex: 1 1 auto; min-height: 0; }
+[data-modulo="etapa"] .etapa:not([data-estado="fijo"]) .etapa-lienzo { flex: none; height: clamp(300px, 58svh, 540px); }
+
+/* ---------- contadores: filas de libreta, cifras tabulares ---------- */
+[data-modulo="etapa"] .etapa-cifras {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 clamp(4px, 1.4vw, 20px);
+  border-block: 1px solid color-mix(in srgb, var(--et-tinta) 28%, transparent);
+  padding-block: clamp(6px, 1.2svh, 12px);
+}
+[data-modulo="etapa"] .cifra { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+[data-modulo="etapa"] .cifra b {
+  font: 600 clamp(1.05rem, 4.6vw, 1.9rem)/1.05 var(--et-txt);
+  font-variant-numeric: tabular-nums lining-nums; font-feature-settings: 'tnum' 1, 'lnum' 1;
+  letter-spacing: -.01em;
+}
+[data-modulo="etapa"] .cifra span {
+  font: 400 clamp(.64rem, 2.4vw, .8rem)/1.2 var(--et-txt);
+  color: var(--et-tinta-2);
+}
+
+/* ---------- el dibujo ---------- */
+[data-modulo="etapa"] .etapa-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+[data-modulo="etapa"] .et-pizarra { fill: var(--et-pizarra); }
+[data-modulo="etapa"] .et-filo { fill: none; stroke: var(--et-tinta); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+[data-modulo="etapa"] .et-nivel { stroke: var(--et-tinta); stroke-opacity: .2; stroke-width: 1; stroke-dasharray: 2 5; }
+[data-modulo="etapa"] .et-cota { font: italic 400 12.5px/1 var(--et-voz); fill: var(--et-tinta-2); }
+[data-modulo="etapa"] .et-km { font: 500 11.5px/1 var(--et-txt); font-variant-numeric: tabular-nums; fill: var(--et-tinta-2); }
+[data-modulo="etapa"] .et-trazo { stroke: var(--et-tinta); stroke-linecap: round; stroke-linejoin: round; }
+[data-modulo="etapa"] .et-madera { fill: var(--et-madera); }
+[data-modulo="etapa"] .et-guia { stroke: var(--et-tinta); stroke-width: 1; stroke-opacity: .5; }
+[data-modulo="etapa"] .et-marca { fill: var(--et-papel); stroke: var(--et-tinta); stroke-width: 2; transition: fill .25s; }
+[data-modulo="etapa"] .et-marca.on { fill: var(--et-tinta); }
+[data-modulo="etapa"] .et-r1 { font: 600 12.5px/1 var(--et-txt); fill: var(--et-tinta); letter-spacing: .01em; }
+[data-modulo="etapa"] .et-r2 { font: italic 400 14px/1 var(--et-voz); fill: var(--et-tinta-2); font-variant-numeric: tabular-nums; }
+[data-modulo="etapa"] .et-r2-f { font-style: normal; font: 500 12.5px/1 var(--et-txt); }
+[data-modulo="etapa"] .et-llego { font: 400 30px/1 var(--et-voz); fill: var(--et-tinta); }
+[data-modulo="etapa"] .et-corchete { fill: none; stroke: var(--et-tinta); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+[data-modulo="etapa"] .et-plomada { stroke: var(--et-papel); stroke-opacity: .55; stroke-width: 1.2; stroke-dasharray: 2 5; }
+[data-modulo="etapa"] .et-aro { fill: var(--et-papel); stroke: var(--et-tinta); stroke-width: 1.6; }
+[data-modulo="etapa"] .et-flecha { color: var(--et-azul); }
+[data-modulo="etapa"] .et-num-c { fill: var(--et-papel); stroke: var(--et-tinta); stroke-width: 1.5; }
+[data-modulo="etapa"] .et-num-t { font: 600 11px/1 var(--et-txt); fill: var(--et-tinta); font-variant-numeric: tabular-nums; }
+
+/* la llegada se escribe al llegar la flecha (en «quieto» ya está) */
+[data-modulo="etapa"] .etapa:not([data-estado="quieto"]) .et-llegada,
+[data-modulo="etapa"] .etapa:not([data-estado="quieto"]) .et-guia-llegada { opacity: 0; transition: opacity .5s ease; }
+[data-modulo="etapa"] .etapa.llego .et-llegada,
+[data-modulo="etapa"] .etapa.llego .et-guia-llegada { opacity: 1; }
+
+/* ---------- la ficha de la parada ---------- */
+[data-modulo="etapa"] .etapa-ficha { min-height: 6.2em; max-width: 64ch; }
+[data-modulo="etapa"] .et-ficha-t { font: italic 400 clamp(1.1rem, 4.6vw, 1.45rem)/1.15 var(--et-voz); color: var(--et-tinta); margin: 0 0 .25em; }
+[data-modulo="etapa"] .et-ficha-p { font: 400 clamp(.88rem, 3.6vw, 1rem)/1.5 var(--et-txt); color: var(--et-tinta); margin: 0; font-variant-numeric: tabular-nums; }
+[data-modulo="etapa"] .etapa-ficha.cambia { animation: et-ficha .28s ease-out; }
+@keyframes et-ficha { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 719px) { [data-modulo="etapa"] .etapa-ficha { min-height: 9.6em; } }
+
+/* ---------- la tabla accesible ---------- */
+[data-modulo="etapa"] .etapa-tabla { margin-top: clamp(1.5rem, 4vw, 2.5rem); max-width: 62rem; overflow-x: auto; }
+[data-modulo="etapa"] .etapa-tabla table { width: 100%; border-collapse: collapse; font: 400 .92rem/1.35 var(--et-txt); font-variant-numeric: tabular-nums; }
+[data-modulo="etapa"] .etapa-tabla caption { text-align: left; font: italic 400 1.2rem/1.2 var(--et-voz); padding-bottom: .6rem; color: var(--et-tinta); }
+[data-modulo="etapa"] .etapa-tabla th, [data-modulo="etapa"] .etapa-tabla td { padding: .5rem .5rem; vertical-align: top; text-align: left; border-bottom: 1px solid color-mix(in srgb, var(--et-tinta) 22%, transparent); }
+[data-modulo="etapa"] .etapa-tabla thead th { font: 600 .74rem/1.2 var(--et-txt); letter-spacing: .04em; text-transform: uppercase; color: var(--et-tinta-2); border-bottom: 2px solid var(--et-tinta); }
+[data-modulo="etapa"] .etapa-tabla tbody th[scope="row"], [data-modulo="etapa"] .etapa-tabla tfoot th[scope="row"] { font-weight: 600; }
+[data-modulo="etapa"] .etapa-tabla small { display: block; font-weight: 400; font-size: .8rem; line-height: 1.35; color: var(--et-tinta-2); }
+[data-modulo="etapa"] .etapa-tabla .col-km { white-space: nowrap; }
+[data-modulo="etapa"] .etapa-tabla .col-n { text-align: right; }
+[data-modulo="etapa"] .etapa-tabla thead .col-n { text-align: right; }
+[data-modulo="etapa"] .etapa-tabla tfoot td, [data-modulo="etapa"] .etapa-tabla tfoot th { border-top: 2px solid var(--et-tinta); border-bottom: 0; font-weight: 600; }
+[data-modulo="etapa"] .etapa-nota { margin: .9rem 0 0; font: 400 .8rem/1.5 var(--et-txt); color: var(--et-tinta-2); max-width: 62rem; }
+@media (max-width: 719px) {
+  [data-modulo="etapa"] .etapa-tabla table { font-size: .82rem; }
+  [data-modulo="etapa"] .etapa-tabla th, [data-modulo="etapa"] .etapa-tabla td { padding: .45rem .3rem; }
+  [data-modulo="etapa"] .etapa-tabla .col-km { white-space: normal; }
+  [data-modulo="etapa"] .etapa-tabla thead th { font-size: .66rem; letter-spacing: .02em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-modulo="etapa"] .etapa-ficha.cambia { animation: none; }
+  [data-modulo="etapa"] .et-marca, [data-modulo="etapa"] .et-llegada, [data-modulo="etapa"] .et-guia-llegada { transition: none; }
+}

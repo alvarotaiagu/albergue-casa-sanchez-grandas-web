@@ -1,0 +1,29 @@
+/* páginas legales y 404: texto largo, sin cortina ni movimiento */
+.legal-cab { background: var(--cal); color: var(--pardo); border-bottom: 1px solid rgba(65, 43, 33, .18); --foco: var(--pardo); }
+.legal-cab .env { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 80px; }
+.legal-cab .marca { margin-right: 0; }
+.legal-cab .volver { font-weight: 600; font-size: .92rem; text-decoration: underline; text-underline-offset: .2em; }
+.legal { padding: clamp(48px, 7vw, 90px) 0 clamp(60px, 8vw, 110px); background: #FBF8F1; color: var(--pardo); --foco: var(--pardo); }
+.legal .env { max-width: 800px; }
+.legal h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.04; margin-bottom: 28px; }
+.legal h2 { font: 800 1.45rem/1.15 var(--f-titulo); margin: 38px 0 12px; }
+.legal p, .legal li { margin-bottom: 12px; }
+.legal ul { list-style: disc; padding-left: 1.3em; }
+.legal dl { margin-bottom: 18px; display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
+.legal dt { font-weight: 600; }
+.legal dd { margin: 0; }
+.legal a { color: var(--azul); }
+.legal .aviso { background: var(--aviso-fondo); border-left: 4px solid var(--oro); color: var(--aviso); padding: 14px 18px; }
+.legal .aviso-corto { font: 600 .8rem/1 var(--f-texto); color: var(--aviso); background: var(--aviso-fondo); padding: 3px 7px; border-radius: 4px; }
+.legal-pie { background: var(--pizarra); color: #D2C9B8; font-size: .86rem; padding: 26px 0; --foco: var(--amarillo); }
+.legal-pie .env { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.legal-pie a { color: var(--cal); }
+@media (max-width: 599px) { .legal dl { grid-template-columns: 1fr; } }
+
+/* 404: la vuelve a dibujar Groucho */
+.no-hay { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 24px; background: var(--amarillo); color: var(--pardo); --foco: var(--pardo); --btn-f: var(--azul); --btn-t: var(--cal); }
+.no { display: grid; gap: 20px; justify-items: center; max-width: 32em; }
+.no__groucho { width: 150px; }
+.no h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.04; text-wrap: balance; }
+.no p { color: #54392A; }
+.no a:not(.btn) { color: var(--pardo); }

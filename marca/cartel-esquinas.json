@@ -1,0 +1,163 @@
+{
+  "foto": "entrada-cartel",
+  "origen": "ref/fotos/instagram/2017-12-15_Bcu68zMB-Le.jpg",
+  "tamano_foto": [
+    640,
+    640
+  ],
+  "lienzo": [
+    1000,
+    575
+  ],
+  "esquinas": [
+    [
+      207.0,
+      119.0
+    ],
+    [
+      403.6,
+      121.6
+    ],
+    [
+      403.0,
+      232.0
+    ],
+    [
+      207.4,
+      229.2
+    ]
+  ],
+  "orden": "arriba-izquierda, arriba-derecha, abajo-derecha, abajo-izquierda (px de la foto original)",
+  "nota": "Las dos de abajo las tapa la cerca: la derecha es donde empieza la cerca; la izquierda sigue la inclinación del borde de arriba.",
+  "flecha": {
+    "centro": [
+      102.0,
+      404.0
+    ],
+    "punta": [
+      22.0,
+      404.0
+    ]
+  },
+  "iou": {
+    "ALBERGUE": {
+      "media_por_letra": 0.894,
+      "iou_palabra": 0.852,
+      "iou_palabra_desenfocada": 0.856,
+      "umbral": 165,
+      "letras": [
+        [
+          "A",
+          0.877,
+          600,
+          1.1
+        ],
+        [
+          "L",
+          0.933,
+          500,
+          0.3
+        ],
+        [
+          "B",
+          0.904,
+          625,
+          -0.1
+        ],
+        [
+          "E",
+          0.904,
+          525,
+          -0.2
+        ],
+        [
+          "R",
+          0.808,
+          625,
+          0.8
+        ],
+        [
+          "G",
+          0.877,
+          600,
+          0.3
+        ],
+        [
+          "U",
+          0.931,
+          625,
+          0.2
+        ],
+        [
+          "E",
+          0.915,
+          525,
+          0.5
+        ]
+      ]
+    },
+    "TURÍSTICO": {
+      "media_por_letra": 0.901,
+      "iou_palabra": 0.845,
+      "iou_palabra_desenfocada": 0.848,
+      "umbral": 153,
+      "letras": [
+        [
+          "T",
+          0.929,
+          650,
+          0.3
+        ],
+        [
+          "U",
+          0.919,
+          650,
+          -0.5
+        ],
+        [
+          "R",
+          0.8,
+          650,
+          0.6
+        ],
+        [
+          "Í",
+          0.912,
+          575,
+          -0.2
+        ],
+        [
+          "S",
+          0.866,
+          600,
+          0.1
+        ],
+        [
+          "T",
+          0.919,
+          575,
+          0.0
+        ],
+        [
+          "I",
+          0.963,
+          600,
+          0.2
+        ],
+        [
+          "C",
+          0.884,
+          650,
+          -0.0
+        ],
+        [
+          "O",
+          0.914,
+          625,
+          -0.1
+        ]
+      ]
+    }
+  },
+  "ecc_letra": 0.688
+}

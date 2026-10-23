@@ -1,0 +1,262 @@
+/* ------------------------------------------------------------------
+   Albergue Casa Sánchez · reserva.css · «Tu cama» (módulo Literas)
+   Todo bajo [data-modulo="reserva"]. Usa los tokens de la web (:root de
+   css/estilos.css) con el valor medido de respaldo. Tokens que lee:
+   --amarillo --pardo --oro --azul --pizarra --pizarra-2 --piedra --madera --cal
+   y las letras --f-titulo (League Spartan), --f-voz (Petrona), --f-texto (Rethink Sans).
+   Azul SOLO en: el foco, el número pintado de la puerta y la flecha del cartel.
+   ------------------------------------------------------------------ */
+[data-modulo="reserva"] {
+  --r-amarillo: var(--amarillo, #E0BF50);
+  --r-pardo: var(--pardo, #412B21);
+  --r-oro: var(--oro, #A37F31);
+  --r-azul: var(--azul, #291886);
+  --r-pizarra: var(--pizarra, #33373C);
+  --r-pizarra-2: var(--pizarra-2, #4A4F55);
+  --r-piedra: var(--piedra, #B9AE9C);
+  --r-madera: var(--madera, #7A5236);
+  --r-cal: var(--cal, #F5F0E6);
+  --r-amarillo-claro: color-mix(in srgb, var(--r-amarillo) 26%, var(--r-cal));
+  --r-tinta-2: color-mix(in srgb, var(--r-pardo) 80%, var(--r-cal));
+  --r-linea: color-mix(in srgb, var(--r-pardo) 38%, var(--r-cal));
+  --r-pared: color-mix(in srgb, var(--r-cal) 72%, var(--r-piedra));
+  --r-suelo: color-mix(in srgb, var(--r-madera) 62%, var(--r-cal));
+  --r-blanco: #FBF8F1;
+  --r-error: #8A2A1E;
+  --r-ease: cubic-bezier(.22, .8, .2, 1);
+  --r-t: var(--f-titulo, 'League Spartan', system-ui, sans-serif);
+  --r-v: var(--f-voz, 'Petrona', Georgia, serif);
+  --r-x: var(--f-texto, 'Rethink Sans', system-ui, sans-serif);
+
+  display: block;
+  container-type: inline-size;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: clamp(1rem, 3.2vw, 2rem);
+  background: var(--r-cal);
+  color: var(--r-pardo);
+  border: 2px solid var(--r-pardo);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--r-pardo);
+  font: 400 1rem/1.5 var(--r-x);
+  font-variant-numeric: tabular-nums;
+  scroll-margin-top: 5rem;
+}
+[data-modulo="reserva"] *, [data-modulo="reserva"] *::before, [data-modulo="reserva"] *::after { box-sizing: border-box; }
+[data-modulo="reserva"] :where(h3, h4, p, dl, dd, ol, ul, fieldset, legend, figure) { margin: 0; padding: 0; }
+[data-modulo="reserva"] button { font: inherit; color: inherit; }
+[data-modulo="reserva"] :focus-visible { outline: 2px solid var(--r-azul); outline-offset: 2px; }
+[data-modulo="reserva"] [aria-disabled="true"] { cursor: not-allowed; }
+
+/* ---------- pasos ---------- */
+[data-modulo="reserva"] .r-pasos { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: 0 0 1.25rem; padding: 0; counter-reset: paso; }
+[data-modulo="reserva"] .r-pasos li { counter-increment: paso; display: flex; align-items: center; gap: .4rem; padding: .2rem .7rem .2rem .25rem; border: 1.5px solid var(--r-linea); border-radius: 99px; font: 600 .82rem/1.2 var(--r-x); color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-pasos li::before { content: counter(paso); display: grid; place-items: center; width: 1.45rem; height: 1.45rem; border-radius: 50%; background: color-mix(in srgb, var(--r-pardo) 12%, var(--r-cal)); font: 700 .78rem var(--r-t); }
+[data-modulo="reserva"] .r-pasos li.hecho::before { content: "\2713"; background: var(--r-pardo); color: var(--r-cal); }
+[data-modulo="reserva"] .r-pasos li[aria-current="step"] { background: var(--r-amarillo); border-color: var(--r-pardo); color: var(--r-pardo); }
+[data-modulo="reserva"] .r-pasos li[aria-current="step"]::before { background: var(--r-pardo); color: var(--r-amarillo); }
+
+/* ---------- disposición ---------- */
+[data-modulo="reserva"] .r-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 19rem); gap: 1.5rem 2rem; align-items: start; }
+[data-modulo="reserva"] .r-main > * + * { margin-top: 1rem; }
+[data-modulo="reserva"] h3 { font: 800 clamp(1.35rem, 3.4vw, 1.8rem)/1.15 var(--r-t); letter-spacing: .01em; }
+[data-modulo="reserva"] h3 small { font: 500 .9rem var(--r-x); color: var(--r-tinta-2); }
+[data-modulo="reserva"] h3:focus { outline: none; }
+[data-modulo="reserva"] h4 { font: 700 1rem var(--r-t); }
+[data-modulo="reserva"] .r-fino { font-size: .86rem; line-height: 1.45; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-aviso { padding: .55rem .75rem; border: 1.5px dashed var(--r-pardo); border-radius: 8px; color: var(--r-pardo); background: var(--r-amarillo-claro); }
+[data-modulo="reserva"] .r-sup { display: inline-block; padding: 0 .4em; border: 1px dashed var(--r-pardo); border-radius: 4px; background: var(--r-amarillo-claro); color: var(--r-pardo); font: 600 .7rem/1.5 var(--r-x); letter-spacing: .04em; text-transform: uppercase; vertical-align: .08em; white-space: nowrap; }
+[data-modulo="reserva"] .r-msg { min-height: 1.4em; font-weight: 600; }
+[data-modulo="reserva"] .r-msg:empty { min-height: 0; }
+[data-modulo="reserva"] .r-acciones { display: flex; flex-wrap: wrap; gap: .7rem; }
+
+/* ---------- botones ---------- */
+[data-modulo="reserva"] .r-btn { min-height: 2.9rem; padding: .7rem 1.25rem; background: var(--r-amarillo); color: var(--r-pardo); border: 2px solid var(--r-pardo); border-radius: 8px; box-shadow: 3px 3px 0 var(--r-pardo); font: 700 1rem/1.2 var(--r-x); cursor: pointer; }
+[data-modulo="reserva"] .r-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--r-pardo); }
+[data-modulo="reserva"] .r-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--r-pardo); }
+[data-modulo="reserva"] .r-btn--linea { background: transparent; box-shadow: none; }
+[data-modulo="reserva"] .r-btn--linea:hover { background: var(--r-amarillo-claro); box-shadow: none; transform: none; }
+[data-modulo="reserva"] .r-btn[aria-disabled="true"] { background: color-mix(in srgb, var(--r-pardo) 10%, var(--r-cal)); border-color: var(--r-linea); color: var(--r-tinta-2); box-shadow: none; transform: none; }
+[data-modulo="reserva"][data-movimiento="1"] .r-btn { transition: transform .15s var(--r-ease), box-shadow .15s var(--r-ease); }
+
+/* ---------- dónde, personas, noches ---------- */
+[data-modulo="reserva"] .r-tipo { border: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .6rem; }
+[data-modulo="reserva"] .r-tipo legend { font: 700 .82rem var(--r-x); letter-spacing: .06em; text-transform: uppercase; color: var(--r-tinta-2); margin-bottom: .4rem; }
+[data-modulo="reserva"] .r-op { display: grid; gap: .15rem; text-align: left; padding: .7rem .9rem; background: transparent; border: 2px solid var(--r-linea); border-radius: 10px; cursor: pointer; }
+[data-modulo="reserva"] .r-op b { font: 700 1rem var(--r-t); }
+[data-modulo="reserva"] .r-op span { font-size: .85rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-op[aria-pressed="true"] { background: var(--r-amarillo); border-color: var(--r-pardo); box-shadow: 3px 3px 0 var(--r-pardo); }
+[data-modulo="reserva"] .r-op[aria-pressed="true"] span { color: var(--r-pardo); }
+[data-modulo="reserva"] .r-op[aria-pressed="true"] b::after { content: " \2713"; }
+[data-modulo="reserva"] .r-fila { display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; }
+[data-modulo="reserva"] .r-cuenta { display: flex; align-items: center; gap: .55rem; }
+[data-modulo="reserva"] .r-cuenta small { font: 700 .78rem var(--r-x); letter-spacing: .05em; text-transform: uppercase; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-cuenta b { min-width: 1.6ch; text-align: center; font: 800 1.6rem/1 var(--r-t); }
+[data-modulo="reserva"] .r-cuenta span { font-size: .85rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-cuenta button, [data-modulo="reserva"] .r-nav { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 2px solid var(--r-pardo); border-radius: 50%; background: var(--r-cal); font: 700 1.3rem/1 var(--r-x); cursor: pointer; }
+[data-modulo="reserva"] .r-cuenta button:hover:not([aria-disabled="true"]), [data-modulo="reserva"] .r-nav:hover:not([aria-disabled="true"]) { background: var(--r-amarillo); }
+[data-modulo="reserva"] .r-cuenta button[aria-disabled="true"], [data-modulo="reserva"] .r-nav[aria-disabled="true"] { border-color: var(--r-linea); color: var(--r-tinta-2); }
+
+/* ---------- calendario ---------- */
+[data-modulo="reserva"] .r-cal > * + * { margin-top: .8rem; }
+[data-modulo="reserva"] .r-top { display: flex; align-items: center; gap: .5rem; }
+[data-modulo="reserva"] .r-top h4 { margin-right: auto; }
+[data-modulo="reserva"] .r-meses { display: grid; grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr)); gap: 1rem 1.4rem; }
+[data-modulo="reserva"] .r-mes__tit { margin-bottom: .4rem; font: 700 1rem var(--r-t); }
+[data-modulo="reserva"] .r-dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+[data-modulo="reserva"] .r-dsem { text-align: center; font: 700 .72rem var(--r-x); color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-dia { position: relative; min-height: 2.6rem; padding: 0 0 .3rem; background: var(--r-cal); border: 1.5px solid var(--r-linea); border-radius: 6px; font: 500 .92rem/1 var(--r-x); cursor: pointer; }
+[data-modulo="reserva"] .r-dia__n { position: relative; top: -.1rem; }
+[data-modulo="reserva"] .r-dia__barra { position: absolute; left: 16%; right: 16%; bottom: 5px; height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--r-pardo) 20%, var(--r-cal)); overflow: hidden; }
+[data-modulo="reserva"] .r-dia__barra::after { content: ""; position: absolute; inset: 0 auto 0 0; width: calc(var(--libre) * 100%); background: var(--r-pardo); }
+[data-modulo="reserva"] .r-dia:hover:not([aria-disabled="true"]) { background: var(--r-amarillo-claro); border-color: var(--r-pardo); }
+[data-modulo="reserva"] .r-dia.cerrado { border-style: dashed; color: var(--r-tinta-2); background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--r-piedra) 36%, var(--r-cal)) 0 4px, color-mix(in srgb, var(--r-piedra) 20%, var(--r-cal)) 4px 7px); }
+[data-modulo="reserva"] .r-dia.completo { border-color: var(--r-tinta-2); color: var(--r-tinta-2); background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--r-pardo) 22%, var(--r-cal)) 0 3px, color-mix(in srgb, var(--r-pardo) 9%, var(--r-cal)) 3px 6px); text-decoration: line-through; }
+[data-modulo="reserva"] .r-dia.corto { border-color: var(--r-tinta-2); color: var(--r-tinta-2); background: color-mix(in srgb, var(--r-pardo) 9%, var(--r-cal)); text-decoration: line-through dotted; }
+[data-modulo="reserva"] .r-dia.pasado { color: var(--r-tinta-2); border-color: transparent; background: transparent; }
+[data-modulo="reserva"] .r-dia.pasado .r-dia__n { opacity: .6; }
+[data-modulo="reserva"] .r-dia.en-estancia { background: var(--r-amarillo); border: 2px solid var(--r-pardo); font-weight: 800; }
+[data-modulo="reserva"] .r-dia.sal { border: 2px dashed var(--r-pardo); }
+[data-modulo="reserva"] .r-ley { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .8rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-ley span { display: inline-flex; align-items: center; gap: .4rem; }
+[data-modulo="reserva"] .r-ley i { width: .95rem; height: .95rem; border: 1.5px solid var(--r-pardo); border-radius: 3px; display: inline-block; }
+[data-modulo="reserva"] .r-ley .l-sel { background: var(--r-amarillo); }
+[data-modulo="reserva"] .r-ley .l-cerrado { border-style: dashed; background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--r-piedra) 36%, var(--r-cal)) 0 3px, color-mix(in srgb, var(--r-piedra) 20%, var(--r-cal)) 3px 5px); }
+[data-modulo="reserva"] .r-ley .l-completo { background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--r-pardo) 22%, var(--r-cal)) 0 2px, color-mix(in srgb, var(--r-pardo) 9%, var(--r-cal)) 2px 4px); }
+[data-modulo="reserva"] .r-ley .l-barra { height: .3rem; margin-top: .1rem; background: linear-gradient(90deg, var(--r-pardo) 0 60%, color-mix(in srgb, var(--r-pardo) 20%, var(--r-cal)) 60%); border-width: 1px; }
+
+/* ---------- resumen ---------- */
+[data-modulo="reserva"] .r-res { padding: 1rem 1.1rem; background: var(--r-amarillo-claro); border: 2px solid var(--r-pardo); border-radius: 12px; position: sticky; top: 5.5rem; }
+[data-modulo="reserva"] .r-res h3 { font-size: 1.2rem; margin-bottom: .6rem; }
+[data-modulo="reserva"] .r-dl > div { display: flex; justify-content: space-between; gap: 1rem; padding: .3rem 0; border-bottom: 1px solid var(--r-linea); font-size: .92rem; }
+[data-modulo="reserva"] .r-dl dt { color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-dl dd { text-align: right; font-weight: 600; }
+[data-modulo="reserva"] .r-desglose { margin: .7rem 0; font-size: .92rem; }
+[data-modulo="reserva"] .r-desglose > div { display: flex; justify-content: space-between; gap: 1rem; padding: .15rem 0; }
+[data-modulo="reserva"] .r-desglose .r-tot { margin-top: .35rem; padding-top: .5rem; border-top: 2px solid var(--r-pardo); font: 800 1.15rem var(--r-t); }
+[data-modulo="reserva"] .r-nada { color: var(--r-tinta-2); font-style: italic; }
+
+/* ---------- las 4 puertas ---------- */
+[data-modulo="reserva"] .r-puertas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.4rem, 2vw, 1rem); }
+[data-modulo="reserva"] .r-puerta { display: flex; flex-direction: column; gap: .45rem; padding: 0; background: none; border: 0; text-align: center; cursor: pointer; }
+[data-modulo="reserva"] .r-puerta__marco { position: relative; display: block; aspect-ratio: 3 / 4.4; border: 5px solid var(--r-pizarra-2); border-bottom-width: 3px; border-radius: 8px 8px 0 0; background: var(--r-pizarra); overflow: hidden; perspective: 520px; }
+[data-modulo="reserva"] .r-puerta__fondo { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 70%, color-mix(in srgb, var(--r-amarillo) 70%, var(--r-cal)) 0, color-mix(in srgb, var(--r-amarillo) 35%, var(--r-pizarra)) 60%, var(--r-pizarra) 100%); }
+[data-modulo="reserva"] .r-puerta__hoja { position: absolute; inset: 0; transform-origin: 0 50%; background:
+  repeating-linear-gradient(90deg, transparent 0 calc(33.33% - 1px), rgba(0,0,0,.28) calc(33.33% - 1px) 33.33%),
+  repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 3px, rgba(0,0,0,.07) 3px 5px),
+  var(--r-madera); border-right: 3px solid color-mix(in srgb, var(--r-madera) 60%, black); }
+[data-modulo="reserva"] .r-puerta__hoja::before { content: ""; position: absolute; left: 12%; right: 12%; bottom: 8%; top: 52%; border: 2px solid color-mix(in srgb, var(--r-madera) 55%, black); border-radius: 3px; }
+[data-modulo="reserva"] .r-puerta__placa { position: absolute; top: 9%; left: 50%; width: 58%; aspect-ratio: 1 / 1.22; translate: -50% 0; background: var(--r-cal); border-radius: 4px 7px 3px 6px; padding: 3%; rotate: -1.5deg; }
+[data-modulo="reserva"] .r-puerta__placa svg { display: block; width: 100%; height: 100%; }
+[data-modulo="reserva"] .r-puerta__placa path { fill: none; stroke: var(--r-azul); stroke-width: 5.5; stroke-linecap: round; stroke-linejoin: round; }
+[data-modulo="reserva"] .r-puerta__pomo { position: absolute; right: 10%; top: 62%; width: 9%; aspect-ratio: 1; border-radius: 50%; background: var(--r-oro); border: 1.5px solid var(--r-pardo); }
+[data-modulo="reserva"] .r-puerta.abierta .r-puerta__hoja { transform: rotateY(-64deg); }
+[data-modulo="reserva"] .r-puerta.abierta .r-puerta__marco { border-color: var(--r-amarillo); outline: 2px solid var(--r-pardo); }
+[data-modulo="reserva"] .r-puerta.sin-camas { cursor: not-allowed; }
+[data-modulo="reserva"] .r-puerta.sin-camas .r-puerta__hoja { filter: grayscale(.7) brightness(.8); }
+[data-modulo="reserva"] .r-puerta__txt { display: grid; line-height: 1.2; }
+[data-modulo="reserva"] .r-puerta__txt b { font: 700 clamp(.78rem, 2.6vw, .95rem) var(--r-t); }
+[data-modulo="reserva"] .r-puerta__txt i { font-style: normal; font-size: clamp(.72rem, 2.4vw, .85rem); color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-puerta:hover:not(.sin-camas) .r-puerta__marco { border-color: var(--r-amarillo); }
+[data-modulo="reserva"][data-movimiento="1"] .r-puerta__hoja { transition: transform .6s var(--r-ease); }
+[data-modulo="reserva"][data-movimiento="1"] .r-puerta__marco { transition: border-color .25s; }
+
+/* ---------- la pared del fondo, de frente ---------- */
+[data-modulo="reserva"] .r-hab { margin-top: 1.1rem; }
+[data-modulo="reserva"] .r-hab__vacio { padding: 1rem; border: 2px dashed var(--r-linea); border-radius: 10px; text-align: center; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-hab__tit { margin-bottom: .55rem; font-size: .9rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-hab__tit b { font: 800 1.1rem var(--r-t); color: var(--r-pardo); }
+[data-modulo="reserva"][data-movimiento="1"] .r-hab__in { transition: opacity .4s var(--r-ease), transform .4s var(--r-ease); }
+[data-modulo="reserva"] .r-hab__in.entra { opacity: 0; transform: translateY(-10px); }
+[data-modulo="reserva"] .r-pared { position: relative; padding: 2.4rem clamp(.5rem, 2vw, 1rem) 2.8rem; background: var(--r-pared); border: 2px solid var(--r-pardo); border-radius: 10px; overflow: hidden; }
+[data-modulo="reserva"] .r-suelo { position: absolute; left: 0; right: 0; bottom: 0; height: 1.9rem; border-top: 2px solid var(--r-pardo); background: repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,0,0,.16) 38px 40px), var(--r-suelo); }
+[data-modulo="reserva"] .r-bombilla { position: absolute; top: 0; left: 50%; width: 2px; height: 1.3rem; background: var(--r-pardo); }
+[data-modulo="reserva"] .r-bombilla::after { content: ""; position: absolute; top: 100%; left: 50%; width: .85rem; height: .95rem; translate: -50% 0; border: 2px solid var(--r-pardo); border-radius: 50% 50% 45% 45%; background: var(--r-amarillo); box-shadow: 0 0 18px 6px color-mix(in srgb, var(--r-amarillo) 55%, transparent); }
+[data-modulo="reserva"] .r-literas { position: relative; z-index: 1; display: flex; justify-content: center; align-items: flex-end; gap: clamp(.4rem, 2vw, 1rem); }
+[data-modulo="reserva"] .r-taq { flex: 0 0 2.4rem; height: 10.5rem; border: 2px solid var(--r-pardo); border-radius: 3px 3px 0 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 2px, transparent 2px 9px), var(--r-oro); position: relative; }
+[data-modulo="reserva"] .r-taq::after { content: ""; position: absolute; right: 22%; top: 55%; width: .3rem; height: .6rem; border-radius: 2px; background: var(--r-pardo); }
+[data-modulo="reserva"] .r-taq--b { background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 2px, transparent 2px 9px), var(--r-pizarra-2); }
+[data-modulo="reserva"] .r-lit { position: relative; flex: 1 1 0; max-width: 16rem; display: flex; flex-direction: column; gap: 1.15rem; padding: .35rem .95rem .85rem; }
+[data-modulo="reserva"] .r-lit::before, [data-modulo="reserva"] .r-lit::after { content: ""; position: absolute; top: 0; bottom: 0; width: .55rem; background: var(--r-blanco); border: 2px solid var(--r-pardo); border-radius: 2px; }
+[data-modulo="reserva"] .r-lit::before { left: 0; }
+[data-modulo="reserva"] .r-lit::after { right: 0; }
+[data-modulo="reserva"] .r-cama { position: relative; z-index: 1; display: flex; align-items: center; gap: .55rem; width: 100%; min-height: 3.5rem; padding: .3rem .65rem; text-align: left; background: var(--r-pizarra-2); color: var(--r-cal); border: 2px solid var(--r-pardo); border-radius: 9px 9px 4px 4px; cursor: pointer; }
+[data-modulo="reserva"] .r-cama::after { content: ""; position: absolute; left: -.95rem; right: -.95rem; bottom: -.72rem; height: .42rem; background: var(--r-blanco); border: 2px solid var(--r-pardo); border-radius: 2px; z-index: -1; }
+[data-modulo="reserva"] .r-cama__ico { flex: none; width: 2.2rem; height: 1.7rem; }
+[data-modulo="reserva"] .r-cama__txt { display: grid; line-height: 1.15; }
+[data-modulo="reserva"] .r-cama__txt b { font: 700 .88rem var(--r-t); letter-spacing: .02em; }
+[data-modulo="reserva"] .r-cama__txt i { font-style: normal; font-size: .8rem; }
+[data-modulo="reserva"] .r-cama:hover:not([aria-disabled="true"]) { background: color-mix(in srgb, var(--r-pizarra-2) 70%, var(--r-amarillo)); }
+[data-modulo="reserva"] .r-cama.ocupada { background: var(--r-piedra); color: var(--r-pardo); border-style: dashed; }
+[data-modulo="reserva"] .r-cama.elegida { background: var(--r-amarillo); color: var(--r-pardo); box-shadow: 0 0 0 3px var(--r-pardo); }
+[data-modulo="reserva"] .r-cama.elegida .r-cama__txt i::before { content: "\2713\00a0"; }
+[data-modulo="reserva"] .r-cama:focus-visible { outline-offset: 4px; }
+[data-modulo="reserva"] .r-elegidas { font-weight: 700; }
+[data-modulo="reserva"] .r-apto { padding: 1rem 1.1rem; border: 2px solid var(--r-pardo); border-radius: 10px; background: var(--r-amarillo-claro); display: grid; gap: .5rem; }
+
+/* sin movimiento (modo sobrio, ?movimiento=0 o preferencia del sistema) */
+[data-modulo="reserva"][data-movimiento="0"] *, [data-modulo="reserva"][data-movimiento="0"] *::before, [data-modulo="reserva"][data-movimiento="0"] *::after { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  [data-modulo="reserva"] *, [data-modulo="reserva"] *::before, [data-modulo="reserva"] *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- datos ---------- */
+[data-modulo="reserva"] .r-form { display: grid; gap: 1rem; max-width: 30rem; }
+[data-modulo="reserva"] .r-form label { display: grid; gap: .3rem; font-weight: 600; }
+[data-modulo="reserva"] .r-form label span { font-weight: 400; font-size: .85rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-form input[type="text"], [data-modulo="reserva"] .r-form select { width: 100%; min-height: 2.9rem; padding: .6rem .75rem; background: var(--r-blanco); color: var(--r-pardo); border: 2px solid var(--r-pardo); border-radius: 8px; font: 400 1rem var(--r-x); }
+[data-modulo="reserva"] .r-form [aria-invalid="true"] { border-color: var(--r-error); border-width: 3px; }
+[data-modulo="reserva"] .r-check { display: flex !important; align-items: flex-start; gap: .65rem; }
+[data-modulo="reserva"] .r-check input { flex: none; width: 1.35rem; height: 1.35rem; margin-top: .15rem; accent-color: var(--r-pardo); }
+[data-modulo="reserva"] .r-check span { font-size: 1rem !important; color: var(--r-pardo) !important; font-weight: 600 !important; }
+[data-modulo="reserva"] .r-check small { font-weight: 400; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-form #r-error { color: var(--r-error); }
+[data-modulo="reserva"] .r-form .r-btn { justify-self: start; }
+
+/* ---------- confirmación: el cartel de bienvenida ---------- */
+[data-modulo="reserva"] .r-conf > * + * { margin-top: 1rem; }
+[data-modulo="reserva"] .r-loc { font-size: .95rem; color: var(--r-tinta-2); }
+[data-modulo="reserva"] .r-loc b { margin-left: .4rem; padding: .15rem .55rem; background: var(--r-blanco); border: 2px solid var(--r-pardo); border-radius: 6px; color: var(--r-pardo); font: 800 1.2rem var(--r-t); letter-spacing: .06em; white-space: nowrap; }
+[data-modulo="reserva"] .r-cartel { max-width: 27rem; margin: 0; filter: drop-shadow(0 5px 0 rgba(65, 43, 33, .22)); }
+[data-modulo="reserva"] .r-cartel svg { display: block; width: 100%; height: auto; overflow: visible; }
+[data-modulo="reserva"] .c-canto { fill: color-mix(in srgb, var(--r-amarillo) 78%, var(--r-pardo)); }
+[data-modulo="reserva"] .c-panel { fill: var(--r-amarillo); }
+[data-modulo="reserva"] .c-franja { fill: var(--r-blanco); }
+[data-modulo="reserva"] .c-flecha { fill: none; stroke: var(--r-azul); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+[data-modulo="reserva"] .c-rotulo { font: 800 15px var(--r-t); fill: var(--r-pardo); letter-spacing: .05em; }
+[data-modulo="reserva"] .r-cartel__txt { color: var(--r-pardo); text-align: center; }
+[data-modulo="reserva"] .r-cartel__txt p { margin: 0; }
+[data-modulo="reserva"] .r-cartel__txt .c1 { font: 800 22px/1.15 var(--r-t); }
+[data-modulo="reserva"] .r-cartel__txt .c2 { margin-top: 5px; font: italic 400 20px/1.2 var(--r-v); }
+[data-modulo="reserva"] .r-cartel--larga .r-cartel__txt .c2 { font-size: 16px; }
+[data-modulo="reserva"] .r-cartel__txt .c3 { margin-top: 5px; font: 600 15px/1.3 var(--r-x); }
+[data-modulo="reserva"] .r-flor3 { display: block; width: 40px; height: 40px; }
+[data-modulo="reserva"] .r-flor3 > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* la flor (la misma pieza en el sprite y en la que se abre) */
+[data-modulo="reserva"] .p { fill: var(--r-oro); }
+[data-modulo="reserva"] .fc { fill: var(--r-pardo); }
+[data-modulo="reserva"] .s-tela { fill: var(--r-cal); stroke: var(--r-pardo); stroke-width: 1.6; stroke-linejoin: round; }
+[data-modulo="reserva"] .s-pliegue, [data-modulo="reserva"] .m-asa, [data-modulo="reserva"] .m-tira { fill: none; stroke: var(--r-pardo); stroke-width: 1.8; stroke-linecap: round; }
+[data-modulo="reserva"] .m-cuerpo { fill: var(--r-oro); stroke: var(--r-pardo); stroke-width: 1.8; }
+[data-modulo="reserva"] .m-bolsillo { fill: color-mix(in srgb, var(--r-oro) 55%, var(--r-cal)); stroke: var(--r-pardo); stroke-width: 1.5; }
+[data-modulo="reserva"][data-movimiento="1"] .r-flor-abre .p { transform-box: fill-box; transform-origin: 50% 100%; animation: r-petalo .75s var(--r-ease) var(--d, 0ms) both; }
+[data-modulo="reserva"][data-movimiento="1"] .r-flor-abre { animation: r-giro 1.1s var(--r-ease) both; }
+@keyframes r-petalo { from { transform: scaleY(.05) rotate(-30deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes r-giro { from { rotate: -40deg; } to { rotate: 0deg; } }
+
+/* ---------- pantallas estrechas ---------- */
+@container (max-width: 800px) {
+  [data-modulo="reserva"] .r-in { grid-template-columns: minmax(0, 1fr); }
+  [data-modulo="reserva"] .r-res { position: static; }
+}
+@container (max-width: 560px) {
+  [data-modulo="reserva"] .r-taq { display: none; }
+  [data-modulo="reserva"] .r-lit { padding-inline: .8rem; }
+  [data-modulo="reserva"] .r-cama { gap: .4rem; padding-inline: .5rem; }
+  [data-modulo="reserva"] .r-cama__ico { width: 1.6rem; height: 1.3rem; }
+  [data-modulo="reserva"] .r-cama__txt b { font-size: .8rem; }
+  [data-modulo="reserva"] .r-cama__txt i { font-size: .74rem; }
+  [data-modulo="reserva"] .r-puerta__marco { border-width: 4px; }
+  [data-modulo="reserva"] .r-ley { font-size: .76rem; }
+}
