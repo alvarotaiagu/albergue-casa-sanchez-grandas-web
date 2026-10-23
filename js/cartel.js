@@ -351,8 +351,8 @@
         const activo = t < 0.3 && vector.style.visibility !== 'hidden';
         girar.disabled = !activo;
         girar.tabIndex = activo ? 0 : -1;
-        etiqueta.style.left = sx.toFixed(1) + 'px';
-        etiqueta.style.top = (sy - radio - 8).toFixed(1) + 'px';
+        anclaEt = [sx, sy - radio - 8];
+        colocarEtiqueta();
         pista.style.opacity = usado || t > 0.05 ? '0' : '';
         estado = { progreso, uz: t, angulo: ang, angUsuario: norm180(angUsuario), rumbo: destActual && destActual.id, esquinas: pts, centroFlecha: [sx, sy] };
         el.dataset.zoom = t.toFixed(3);
@@ -385,8 +385,18 @@
       destruidoFns.push(() => window.removeEventListener('resize', alResize));
 
       /* ---- girar la flecha ---- */
+      // la etiqueta va centrada sobre la flecha, pero sin salirse por los lados (en el móvil la flecha está pegada a la izquierda)
+      let anclaEt = null;
+      function colocarEtiqueta() {
+        if (!anclaEt || !g) return;
+        const m = 10, w = etiqueta.offsetWidth;
+        const x = w ? clamp(anclaEt[0], w / 2 + m, Math.max(w / 2 + m, g.vw - w / 2 - m)) : anclaEt[0];
+        etiqueta.style.left = x.toFixed(1) + 'px';
+        etiqueta.style.top = anclaEt[1].toFixed(1) + 'px';
+      }
       function nombrarRumbo(d) {
         etiqueta.textContent = d ? rotulo(d) : '';
+        colocarEtiqueta();
         etiqueta.classList.toggle('es-visible', !!d);
         if (!d) etiqueta.setAttribute('data-vacia', '1'); else etiqueta.removeAttribute('data-vacia');
       }
